@@ -9,7 +9,7 @@
     
     <link href="revealjs/dist/reveal.css" rel="stylesheet">
     <link href="revealjs/dist/reset.css" rel="stylesheet">
-    <link href="revealjs/dist/theme/solarized.css" id="theme" rel="stylesheet">
+      <link href="revealjs/dist/theme/dracula.css" id="theme" rel="stylesheet">
     <link href="revealjs/plugin/highlight/monokai.css" id="highlight-theme" rel="stylesheet">
     <link href="revealjs/plugin/copycode/copycode.css" rel="stylesheet">
     
@@ -72,39 +72,167 @@
   </head>
   <body>
     <div class="reveal">
-      <a class="top-left" href="https://github.com/kslides/kslides-template/" target="_blank" title="View presentation source on Github">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55">
-                    
-          <path d="M27.5 11.2a16.3 16.3 0 0 0-5.1 31.7c.8.2 1.1-.3 1.1-.7v-2.8c-4.5 1-5.5-2.2-5.5-2.2-.7-1.9-1.8-2.4-1.8-2.4-1.5-1 .1-1 .1-1 1.6.1 2.5 1.7 2.5 1.7 1.5 2.5 3.8 1.8 4.7 1.4.2-1 .6-1.8 1-2.2-3.5-.4-7.3-1.8-7.3-8 0-1.8.6-3.3 1.6-4.4-.1-.5-.7-2.1.2-4.4 0 0 1.4-.4 4.5 1.7a15.6 15.6 0 0 1 8.1 0c3.1-2 4.5-1.7 4.5-1.7.9 2.3.3 4 .2 4.4 1 1 1.6 2.6 1.6 4.3 0 6.3-3.8 7.7-7.4 8 .6.6 1.1 1.6 1.1 3v4.6c0 .4.3.9 1.1.7a16.3 16.3 0 0 0-5.2-31.7" fill="currentColor" stroke="none"></path>
-                  
-        </svg>
-              </a>
-			<a class="top-right" href="/" target="_self" title="Go to 1st Slide">&#127968;</a>
+        <a class="top-right" href="/" target="_self"></a>
 
       <div class="slides">
-        <section data-markdown="" data-transition="zoom">
+          <section data-background-color="#27282c" data-markdown="">
+              <script type="text/template">
+                  ![KotlinLogo](images/kotlin_logo.png)
+              </script>
+          </section>
+
+          <section>
+              <section data-background-color="#27282c" data-markdown="" data-separator=""
+                       data-separator-notes="^Notes?:" data-separator-vertical="">
+                  <script type="text/template">
+                      ![JSStack](images/js-stack.png)
+
+                      Notes:
+                      TypeScript è un superset tipizzato di JavaScript.
+
+                      Usi principali:
+                      - Frontend: React/ReactNative, Angular, Vue.js, Svelte, Next.js
+                      - Backend: NodeJS
+                  </script>
+              </section>
+
+              <section data-background-color="#27282c" data-markdown="" data-separator=""
+                       data-separator-notes="^Notes?:" data-separator-vertical="">
+                  <script type="text/template">
+                      ```kotlin
+                      // MyNativeModule.kt
+                      package com.example
+
+                      import com.facebook.react.bridge.ReactApplicationContext
+                      import com.facebook.react.bridge.ReactContextBaseJavaModule
+                      import com.facebook.react.bridge.ReactMethod
+                      import com.facebook.react.bridge.Promise
+                      import com.facebook.react.bridge.ReadableMap
+
+                      data class Person(val name: String, val surname: String)
+
+                      class MyNativeModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+
+                      override fun getName(): String {
+                      return "MyNativeModule"
+                      }
+
+                      @ReactMethod
+                      fun createPerson(personMap: ReadableMap, promise: Promise) {
+                      try {
+                      // Estrai i dati dalla mappa
+                      val name = personMap.getString("name") ?: ""
+                      val surname = personMap.getString("surname") ?: ""
+
+                      // Crea un oggetto Person
+                      val person = Person(name, surname)
+
+                      // Converti l'oggetto in una mappa da restituire a JavaScript
+                      val personMap = mapOf("name" to person.name, "surname" to person.surname)
+
+                      promise.resolve(personMap)
+                      } catch (e: Exception) {
+                      promise.reject("ERROR", e)
+                      }
+                      }
+                      }
+                      ```
+
+                      Notes:
+                      In questo esempio, un oggetto complesso di tipo `Person` viene creato da un oggetto `ReadableMap` passato dal lato JavaScript. La classe `Person` contiene due campi: `name` e `surname`. Dopo aver creato l'oggetto, viene convertito in una mappa e restituito al codice JavaScript attraverso una Promise.
+                  </script>
+              </section>
+
+          </section>
+
+          <section>
+              <section data-background-color="#27282c" data-markdown="" data-separator=""
+                       data-separator-notes="^Notes?:" data-separator-vertical="">
+                  <script type="text/template">
+                      ![DartStack](images/dart-stack.png)
+
+                      Notes:
+                      Dart è un linguaggio di programmazione sviluppato da Google.
+                      Presentato nell'ottobre 2011, come teorico sostituto di JS, per poi riprogettarlo per uso con Flutter rilasciato nel 2017.
+
+                      Con la versione di dart 2.12 uscita il 3 marzo 2021, ma resa stabile dalla 3.0 del 10 maggio 2023.
+                      Flutter, utilizzato per creare app mobile e web cross-platform.
+                  </script>
+              </section>
+
+              <section data-background-color="#27282c" data-markdown="" data-separator=""
+                       data-separator-notes="^Notes?:" data-separator-vertical="">
+                  <script type="text/template">
+                      **Android (Kotlin):**
+
+                      ```kotlin
+                      import io.flutter.embedding.android.FlutterActivity
+                      import io.flutter.plugin.common.MethodCall
+                      import io.flutter.plugin.common.MethodChannel
+
+                      class MainActivity : FlutterActivity() {
+                      private val CHANNEL = "com.example.myapp/data"
+
+                      override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
+                      // ...
+                      val methodChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL)
+                      methodChannel.setMethodCallHandler { call, result ->
+                      if (call.method == "getData") {
+                      val data = getDataFromAndroid() // Funzione per ottenere i dati da Android
+                      result.success(data)
+                      } else {
+                      result.notImplemented()
+                      }
+                      }
+                      }
+                      }
+                      ```
+
+                      **Flutter (Dart):**
+
+                      ```dart
+                      import 'package:flutter/services.dart';
+
+                      const platform = MethodChannel('com.example.myapp/data');
+
+                      Future
+                      <dynamic> getDataFromAndroid() async {
+                          try {
+                          final dynamic result = await platform.invokeMethod('getData');
+                          return result; // Utilizzare i dati ricevuti
+                          } on PlatformException catch (e) {
+                          // Gestione degli errori
+                          }
+                          }
+                          ```
+                  </script>
+              </section>
+
+          </section>
+
+          <section data-background-color="#27282c" data-markdown="" data-transition="zoom">
           <script type="text/template">
 # Markdown Slide
 ## 🍒   
 Press ESC to see presentation overview.
 </script>
         </section>
-        
-        <section>
+
+          <section data-background-color="#27282c">
           
           <h1>An HTML Slide &#128038;</h1>
           
           <p>This is some text</p>
         </section>
-        
-        <section>
+
+          <section data-background-color="#27282c">
           <h1>A DSL Slide &#128038;</h1>
           <p>This is some text</p>
         </section>
         
         <section>
-          <section data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical="">
+            <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:"
+                     data-separator-vertical="">
             <script type="text/template">
 ## Code with a markdownSlide     
 ```kotlin [1,5|2,4|3]
@@ -116,21 +244,22 @@ fun main() {
 ```
 </script>
           </section>
-          
-          <section data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical="">
+
+            <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:"
+                     data-separator-vertical="">
             <script type="text/template">
 ## Slide Definition    
 ```kotlin []
 markdownSlide {
-  val src = "kslides-examples/src/main/kotlin/content/HelloWorldK.kt"
-  content {
-    """
-    ## Code with a markdownSlide     
-    ```kotlin [1,5|2,4|3]
-    ${include(githubRawUrl("kslides", "kslides", src), "[3-7]")}
-    ```
-    """
-  }
+val src = "kslides-examples/src/main/kotlin/content/HelloWorldK.kt"
+content {
+"""
+## Code with a markdownSlide
+```kotlin [1,5|2,4|3]
+${include(githubRawUrl("kslides", "kslides", src), "[3-7]")}
+```
+"""
+}
 }
 ```
 <a href="https://www.srcref.com/github?account=kslides&amp;repo=kslides-template&amp;branch=master&amp;path=src%2Fmain%2Fkotlin%2FSlides.kt&amp;bregex=%5Cs%2B%2F%2F+code1+begin&amp;boccur=1&amp;boffset=1&amp;btopd=true&amp;eregex=%5Cs%2B%2F%2F+code1+end&amp;eoccur=1&amp;eoffset=-1&amp;etopd=true" id="ghsrc" target="_blank">GitHub Source</a>
@@ -140,7 +269,7 @@ markdownSlide {
         </section>
         
         <section>
-          <section>
+            <section data-background-color="#27282c">
             <h2>Code with a dslSlide</h2>
             <pre><code class="kotlin" data-line-numbers="1,5|2,4|3" data-noescape="" data-trim="">
 fun main() {
@@ -151,22 +280,22 @@ fun main() {
 </code>
             </pre>
           </section>
-          
-          <section>
+
+            <section data-background-color="#27282c">
             <h2>Slide Definition</h2>
             <pre><code class="kotlin" data-line-numbers="" data-noescape="" data-trim="">
 dslSlide {
-  val src = "kslides-examples/src/main/kotlin/content/HelloWorldK.kt"
-  val url = githubRawUrl("kslides", "kslides", src)
-  content {
-    h2 { +"Code with a dslSlide" }
-    // Display lines 3-7 of the url content and highlight lines 1 and 5, 2 and 4, and finally 3
-    codeSnippet {
-      language = "kotlin"
-      highlightPattern = "[1,5|2,4|3]"
-      +include(url, "[3-7]")
+    val src = "kslides-examples/src/main/kotlin/content/HelloWorldK.kt"
+    val url = githubRawUrl("kslides", "kslides", src)
+    content {
+        h2 { +"Code with a dslSlide" }
+        // Display lines 3-7 of the url content and highlight lines 1 and 5, 2 and 4, and finally 3
+        codeSnippet {
+            language = "kotlin"
+            highlightPattern = "[1,5|2,4|3]"
+            +include(url, "[3-7]")
+        }
     }
-  }
 }
 </code>
             </pre>
@@ -176,7 +305,7 @@ dslSlide {
         </section>
         
         <section>
-          <section data-auto-animate="" data-transition="none">
+            <section data-auto-animate="" data-background-color="#27282c" data-transition="none">
             <h2>Animated Code without Line Numbers</h2>
             <pre data-id="code-animation"><code class="json" data-noescape="" data-trim="">
 {
@@ -187,8 +316,8 @@ dslSlide {
 </code>
             </pre>
           </section>
-          
-          <section data-auto-animate="" data-transition="none">
+
+            <section data-auto-animate="" data-background-color="#27282c" data-transition="none">
             <h2>Animated Code without Line Numbers</h2>
             <pre data-id="code-animation"><code class="json" data-noescape="" data-trim="">
 {
@@ -204,8 +333,8 @@ dslSlide {
 </code>
             </pre>
           </section>
-          
-          <section data-auto-animate="" data-transition="none">
+
+            <section data-auto-animate="" data-background-color="#27282c" data-transition="none">
             <h2>Animated Code without Line Numbers</h2>
             <pre data-id="code-animation"><code class="json" data-noescape="" data-trim="">
 "books":[
@@ -223,8 +352,8 @@ dslSlide {
 </code>
             </pre>
           </section>
-          
-          <section data-auto-animate="" data-transition="none">
+
+            <section data-auto-animate="" data-background-color="#27282c" data-transition="none">
             <h2>Animated Code without Line Numbers</h2>
             <pre data-id="code-animation"><code class="json" data-noescape="" data-trim="">
 {
@@ -244,28 +373,29 @@ dslSlide {
 </code>
             </pre>
           </section>
-          
-          <section data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical="">
+
+            <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:"
+                     data-separator-vertical="">
             <script type="text/template">
 ## Slide Definition    
 ```kotlin []
 for (lines in "[8-12|3-12|2-13|]".toLinePatterns()) {
-  dslSlide {
-    autoAnimate = true
-    slideConfig {
-      transition = Transition.NONE
-    }
-    content {
-      h2 { +"Animated Code without Line Numbers" }
-      val file = "src/main/resources/json-example.json"
-      codeSnippet {
-        dataId = "code-animation"
-        language = "json"
-        highlightPattern = "none"
-        +include(file, linePattern = lines)
-      }
-    }
-  }
+dslSlide {
+autoAnimate = true
+slideConfig {
+transition = Transition.NONE
+}
+content {
+h2 { +"Animated Code without Line Numbers" }
+val file = "src/main/resources/json-example.json"
+codeSnippet {
+dataId = "code-animation"
+language = "json"
+highlightPattern = "none"
++include(file, linePattern = lines)
+}
+}
+}
 }
 ```
 <a href="https://www.srcref.com/github?account=kslides&amp;repo=kslides-template&amp;branch=master&amp;path=src%2Fmain%2Fkotlin%2FSlides.kt&amp;bregex=%5Cs%2B%2F%2F+code3+begin&amp;boccur=1&amp;boffset=1&amp;btopd=true&amp;eregex=%5Cs%2B%2F%2F+code3+end&amp;eoccur=1&amp;eoffset=-1&amp;etopd=true" id="ghsrc" target="_blank">GitHub Source</a>
@@ -275,7 +405,7 @@ for (lines in "[8-12|3-12|2-13|]".toLinePatterns()) {
         </section>
         
         <section>
-          <section data-auto-animate="" data-transition="none">
+            <section data-auto-animate="" data-background-color="#27282c" data-transition="none">
             <h2>Animated Code with Line Numbers</h2>
             <pre data-id="code-animation"><code class="json" data-line-numbers="" data-ln-start-from="3" data-noescape="" data-trim="">
 {
@@ -286,8 +416,8 @@ for (lines in "[8-12|3-12|2-13|]".toLinePatterns()) {
 </code>
             </pre>
           </section>
-          
-          <section data-auto-animate="" data-transition="none">
+
+            <section data-auto-animate="" data-background-color="#27282c" data-transition="none">
             <h2>Animated Code with Line Numbers</h2>
             <pre data-id="code-animation"><code class="json" data-line-numbers="" data-ln-start-from="3" data-noescape="" data-trim="">
 {
@@ -303,8 +433,8 @@ for (lines in "[8-12|3-12|2-13|]".toLinePatterns()) {
 </code>
             </pre>
           </section>
-          
-          <section data-auto-animate="" data-transition="none">
+
+            <section data-auto-animate="" data-background-color="#27282c" data-transition="none">
             <h2>Animated Code with Line Numbers</h2>
             <pre data-id="code-animation"><code class="json" data-line-numbers="" data-ln-start-from="2" data-noescape="" data-trim="">
 "books":[
@@ -322,8 +452,8 @@ for (lines in "[8-12|3-12|2-13|]".toLinePatterns()) {
 </code>
             </pre>
           </section>
-          
-          <section data-auto-animate="" data-transition="none">
+
+            <section data-auto-animate="" data-background-color="#27282c" data-transition="none">
             <h2>Animated Code with Line Numbers</h2>
             <pre data-id="code-animation"><code class="json" data-line-numbers="" data-ln-start-from="1" data-noescape="" data-trim="">
 {
@@ -343,28 +473,29 @@ for (lines in "[8-12|3-12|2-13|]".toLinePatterns()) {
 </code>
             </pre>
           </section>
-          
-          <section data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical="">
+
+            <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:"
+                     data-separator-vertical="">
             <script type="text/template">
 ## Slide Definition    
 ```kotlin []
 for (lines in "[8-12|3-12|2-13|]".toLinePatterns().zip(listOf(3, 3, 2, 1))) {
-  dslSlide {
-    autoAnimate = true
-    slideConfig {
-      transition = Transition.NONE
-    }
-    content {
-      h2 { +"Animated Code with Line Numbers" }
-      val file = "src/main/resources/json-example.json"
-      codeSnippet {
-        dataId = "code-animation"
-        language = "json"
-        lineOffSet = lines.second
-        +include(file, linePattern = lines.first)
-      }
-    }
-  }
+dslSlide {
+autoAnimate = true
+slideConfig {
+transition = Transition.NONE
+}
+content {
+h2 { +"Animated Code with Line Numbers" }
+val file = "src/main/resources/json-example.json"
+codeSnippet {
+dataId = "code-animation"
+language = "json"
+lineOffSet = lines.second
++include(file, linePattern = lines.first)
+}
+}
+}
 }
 ```
 <a href="https://www.srcref.com/github?account=kslides&amp;repo=kslides-template&amp;branch=master&amp;path=src%2Fmain%2Fkotlin%2FSlides.kt&amp;bregex=%5Cs%2B%2F%2F+code4+begin&amp;boccur=1&amp;boffset=1&amp;btopd=true&amp;eregex=%5Cs%2B%2F%2F+code4+end&amp;eoccur=1&amp;eoffset=-1&amp;etopd=true" id="ghsrc" target="_blank">GitHub Source</a>
@@ -374,27 +505,29 @@ for (lines in "[8-12|3-12|2-13|]".toLinePatterns().zip(listOf(3, 3, 2, 1))) {
         </section>
         
         <section>
-          <section data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical="">
+            <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:"
+                     data-separator-vertical="">
             <script type="text/template">
 ## Images 
    
 ![revealjs-image](images/revealjs.png)
 </script>
           </section>
-          
-          <section data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical="">
+
+            <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:"
+                     data-separator-vertical="">
             <script type="text/template">
 ## Slide Definition    
 ```kotlin []
 markdownSlide {
-  // Image size is controlled by css above
-  content {
-    """
-    ## Images 
-       
-    ![revealjs-image](images/revealjs.png)
-    """
-  }
+// Image size is controlled by css above
+content {
+"""
+## Images
+
+![revealjs-image](images/revealjs.png)
+"""
+}
 }
 ```
 <a href="https://www.srcref.com/github?account=kslides&amp;repo=kslides-template&amp;branch=master&amp;path=src%2Fmain%2Fkotlin%2FSlides.kt&amp;bregex=%5Cs%2B%2F%2F+image+begin&amp;boccur=1&amp;boffset=1&amp;btopd=true&amp;eregex=%5Cs%2B%2F%2F+image+end&amp;eoccur=1&amp;eoffset=-1&amp;etopd=true" id="ghsrc" target="_blank">GitHub Source</a>
@@ -404,7 +537,8 @@ markdownSlide {
         </section>
         
         <section>
-          <section data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical="" id="otherslides">
+            <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:"
+                     data-separator-vertical="" id="otherslides">
             <script type="text/template">
 ## Other Presentations Defined In Slides.kt   
 <span style="text-align: left; text-indent: 25%;">
@@ -417,26 +551,27 @@ markdownSlide {
 </span>
 </script>
           </section>
-          
-          <section data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical="">
+
+            <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:"
+                     data-separator-vertical="">
             <script type="text/template">
 ## Slide Definition    
 ```kotlin
 markdownSlide {
-  id = "otherslides"
-  content {
-    """
-    ## Other Presentations Defined In Slides.kt   
-    <span style="text-align: left; text-indent: 25%;">
+id = "otherslides"
+content {
+"""
+## Other Presentations Defined In Slides.kt
+<span style="text-align: left; text-indent: 25%;">
 
-    [🐦 greattalk1/ Slides](/greattalk1) 
+[🐦 greattalk1/ Slides](/greattalk1) 
 
-    [🐦 greattalk1/other.html Slides](/greattalk1/other.html) 
+[🐦 greattalk1/other.html Slides](/greattalk1/other.html) 
 
-    [🐦 greattalk2.html Slides](/greattalk2.html) 
-    </span>
-    """
-  }
+[🐦 greattalk2.html Slides](/greattalk2.html) 
+</span>
+"""
+}
 }
 ```
 <a href="https://www.srcref.com/github?account=kslides&amp;repo=kslides-template&amp;branch=master&amp;path=src%2Fmain%2Fkotlin%2FSlides.kt&amp;bregex=%5Cs%2B%2F%2F+others+begin&amp;boccur=1&amp;boffset=1&amp;btopd=true&amp;eregex=%5Cs%2B%2F%2F+others+end&amp;eoccur=1&amp;eoffset=-1&amp;etopd=true" id="ghsrc" target="_blank">GitHub Source</a>
@@ -449,6 +584,7 @@ markdownSlide {
     </div>
     	
 	<script src="revealjs/dist/reveal.js"></script>
+    <script src="revealjs/plugin/notes/notes.js"></script>
 	<script src="revealjs/plugin/zoom/zoom.js"></script>
 	<script src="revealjs/plugin/search/search.js"></script>
 	<script src="revealjs/plugin/markdown/markdown.js"></script>
@@ -460,7 +596,7 @@ markdownSlide {
 	<script>
 		Reveal.initialize({
 			history: true,
-			transition: 'concave',
+            transition: 'slide',
 			transitionSpeed: 'slow',
 
 			slideNumber: 'c/t',
@@ -476,14 +612,8 @@ markdownSlide {
 			menu: {
 				numbers: true
 			},
-			
-			copycode: {
-				timeout: 2000,
-				copy: 'Copy',
-				copied: 'Copied!'
-			},
-			
-			plugins: [ RevealZoom, RevealSearch, RevealMarkdown, RevealHighlight, RevealMenu, CopyCode ]
+
+            plugins: [RevealNotes, RevealZoom, RevealSearch, RevealMarkdown, RevealHighlight, RevealMenu, CopyCode]
 		});
 
 </script>
