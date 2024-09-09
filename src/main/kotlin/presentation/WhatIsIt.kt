@@ -159,14 +159,103 @@ fun Presentation.WhatIsIt() {
         """
             }
         }
+
+        markdownSlide {
+            // Flutter Platform Channel con Kotlin - Oggetto Complesso
+            content {
+                """
+        ```dart
+        // Dart: Definizione della classe Person e utilizzo di MethodChannel
+
+        import 'package:flutter/services.dart';
+
+        class Person {
+          final String name;
+          final String surname;
+
+          Person(this.name, this.surname);
+
+          Map&lt;String, String&gt; toMap() {
+            return {
+              'name': name,
+              'surname': surname,
+            };
+          }
+        }
+
+        class NativeModule {
+          static const platform = MethodChannel('com.example/native');
+
+          Future&lt;Map&lt;String, String&gt;?&gt; createPerson(Person person) async {
+            try {
+              final result = await platform.invokeMethod('createPerson', person.toMap());
+              return Map&lt;String, String&gt;.from(result);
+            } catch (e) {
+              print("Failed to create person: '${"\${e.message}"}'.");
+              return null;
+            }
+          }
+        }
+        ```     
+
+        Notes:
+        In questo esempio, utilizziamo un `MethodChannel` per comunicare tra Flutter (Dart) e Kotlin (Android). Un oggetto `Person` viene creato in Dart e inviato al codice nativo tramite una mappa. Kotlin riceve la mappa, crea un'istanza della classe `Person`, e restituisce i dati al codice Dart.
+        """.trimIndent()
+            }
+        }
+
+        markdownSlide {
+            content {
+                """
+                    ```kotlin
+        // Kotlin: Implementazione del Platform Channel in Android
+
+        package com.example
+
+        import androidx.annotation.NonNull
+        import io.flutter.embedding.engine.plugins.FlutterPlugin
+        import io.flutter.plugin.common.MethodCall
+        import io.flutter.plugin.common.MethodChannel
+
+        data class Person(val name: String, val surname: String)
+
+        class NativeModulePlugin : FlutterPlugin, MethodChannel.MethodCallHandler {
+
+            private lateinit var channel: MethodChannel
+
+            override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+                channel = MethodChannel(flutterPluginBinding.binaryMessenger, "com.example/native")
+                channel.setMethodCallHandler(this)
+            }
+
+            override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: MethodChannel.Result) {
+                when (call.method) {
+                    "createPerson" -> {
+                        val name = call.argument&lt;String&gt;(&quot;name&quot;) ?: ""
+                        val surname = call.argument&lt;String&gt;(&quot;surname&quot;) ?: ""
+
+                        val person = Person(name, surname)
+                        val personMap = mapOf("name" to person.name, "surname" to person.surname)
+
+                        result.success(personMap)
+                    }
+                    else -> result.notImplemented()
+                }
+            }
+
+            override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+                channel.setMethodCallHandler(null)
+            }
+        }
+        ```
+                """.trimIndent()
+            }
+        }
     }
 
     verticalSlides {
-        markdownSlide {
-            """
-                
-            """.trimIndent()
-        }
+
+
     }
 
     //TODO Cos'è Kotlin

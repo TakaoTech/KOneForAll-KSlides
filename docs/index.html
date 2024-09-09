@@ -78,6 +78,9 @@
           <section data-background-color="#27282c" data-markdown="">
               <script type="text/template">
                   ![KotlinLogo](images/kotlin_logo.png)
+
+                  Notes:
+                  Spingere sulla domanda "Uno strumento quando è definito enterprise?"
               </script>
           </section>
 
@@ -93,6 +96,9 @@
                       Usi principali:
                       - Frontend: React/ReactNative, Angular, Vue.js, Svelte, Next.js
                       - Backend: NodeJS
+
+                      Quando uno strumento è enterprise?
+                      Ricordiamo che JS è stato scritto in 10 giorni
                   </script>
               </section>
 
@@ -157,6 +163,9 @@
 
                       Con la versione di dart 2.12 uscita il 3 marzo 2021, ma resa stabile dalla 3.0 del 10 maggio 2023.
                       Flutter, utilizzato per creare app mobile e web cross-platform.
+
+                      Quando uno strumento è enterprise?
+                      Google ha tirato su flutter nel 2015 e "nella pratica" salvato dart dal suo declino infilandocelo a "forza".
                   </script>
               </section>
 
@@ -210,6 +219,104 @@
 
           </section>
 
+          <section>
+              <section data-background-color="#27282c" data-markdown="" data-separator=""
+                       data-separator-notes="^Notes?:" data-separator-vertical="">
+                  <script type="text/template">
+                      ```dart
+                      // Dart: Definizione della classe Person e utilizzo di MethodChannel
+
+                      import 'package:flutter/services.dart';
+
+                      class Person {
+                      final String name;
+                      final String surname;
+
+                      Person(this.name, this.surname);
+
+                      Map
+                      <String, String> toMap() {
+                      return {
+                      'name': name,
+                      'surname': surname,
+                      };
+                      }
+                      }
+
+                      class NativeModule {
+                      static const platform = MethodChannel('com.example/native');
+
+                      Future
+                      <Map
+                      <String, String>?> createPerson(Person person) async {
+                      try {
+                      final result = await platform.invokeMethod('createPerson', person.toMap());
+                      return Map
+                      <String, String>.from(result);
+                      } catch (e) {
+                      print("Failed to create person: '${e.message}'.");
+                      return null;
+                      }
+                      }
+                      }
+                      ```
+
+                      Notes:
+                      In questo esempio, utilizziamo un `MethodChannel` per comunicare tra Flutter (Dart) e Kotlin (Android). Un oggetto `Person` viene creato in Dart e inviato al codice nativo tramite una mappa. Kotlin riceve la mappa, crea un'istanza della classe `Person`, e restituisce i dati al codice Dart.
+                  </script>
+              </section>
+
+              <section data-background-color="#27282c" data-markdown="" data-separator=""
+                       data-separator-notes="^Notes?:" data-separator-vertical="">
+                  <script type="text/template">
+                      ```kotlin
+                      // Kotlin: Implementazione del Platform Channel in Android
+
+                      package com.example
+
+                      import androidx.annotation.NonNull
+                      import io.flutter.embedding.engine.plugins.FlutterPlugin
+                      import io.flutter.plugin.common.MethodCall
+                      import io.flutter.plugin.common.MethodChannel
+
+                      data class Person(val name: String, val surname: String)
+
+                      class NativeModulePlugin : FlutterPlugin, MethodChannel.MethodCallHandler {
+
+                      private lateinit var channel: MethodChannel
+
+                      override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+                      channel = MethodChannel(flutterPluginBinding.binaryMessenger, "com.example/native")
+                      channel.setMethodCallHandler(this)
+                      }
+
+                      override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: MethodChannel.Result) {
+                      when (call.method) {
+                      "createPerson" -> {
+                      val name = call.argument
+                      <String>("name") ?: ""
+                          val surname = call.argument
+                          <String>("surname") ?: ""
+
+                              val person = Person(name, surname)
+                              val personMap = mapOf("name" to person.name, "surname" to person.surname)
+
+                              result.success(personMap)
+                              }
+                              else -> result.notImplemented()
+                              }
+                              }
+
+                              override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+                              channel.setMethodCallHandler(null)
+                              }
+                              }
+                              ```
+                  </script>
+              </section>
+
+          </section>
+
           <section data-background-color="#27282c" data-markdown="" data-transition="zoom">
           <script type="text/template">
 # Markdown Slide
@@ -254,7 +361,7 @@ markdownSlide {
 val src = "kslides-examples/src/main/kotlin/content/HelloWorldK.kt"
 content {
 """
-## Code with a markdownSlide
+## Code with a markdownSlide     
 ```kotlin [1,5|2,4|3]
 ${include(githubRawUrl("kslides", "kslides", src), "[3-7]")}
 ```
@@ -523,8 +630,8 @@ markdownSlide {
 // Image size is controlled by css above
 content {
 """
-## Images
-
+## Images 
+   
 ![revealjs-image](images/revealjs.png)
 """
 }
@@ -561,7 +668,7 @@ markdownSlide {
 id = "otherslides"
 content {
 """
-## Other Presentations Defined In Slides.kt
+## Other Presentations Defined In Slides.kt   
 <span style="text-align: left; text-indent: 25%;">
 
 [🐦 greattalk1/ Slides](/greattalk1) 
