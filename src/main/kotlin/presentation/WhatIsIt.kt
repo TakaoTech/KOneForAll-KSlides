@@ -89,10 +89,10 @@ fun Presentation.WhatIsIt() {
 
     }
 
+    // STACK tecnologico basato su Dart
     verticalSlides {
 
         markdownSlide {
-            // STACK tecnologico basato su Dart
             content {
                 """
             ![DartStack](images/dart-stack.png)
@@ -111,8 +111,6 @@ fun Presentation.WhatIsIt() {
         }
 
         markdownSlide {
-            // Trasferimento di dati da Android a Flutter tramite MethodChannel
-
             content {
                 """
         **Android (Kotlin):**
@@ -139,8 +137,14 @@ fun Presentation.WhatIsIt() {
             }
         }
         ```
+        """
+            }
+        }
 
-        **Flutter (Dart):**
+        markdownSlide {
+            content {
+                """
+                    **Flutter (Dart):**
 
         ```dart
         import 'package:flutter/services.dart';
@@ -156,7 +160,7 @@ fun Presentation.WhatIsIt() {
           }
         }
         ```
-        """
+                """.trimIndent()
             }
         }
 
@@ -254,6 +258,112 @@ fun Presentation.WhatIsIt() {
     }
 
     verticalSlides {
+        markdownSlide {
+            // Stack tecnologico attuale basato su Kotlin
+            content {
+                """
+        # Stack Tecnologico Attuale
+        ## Basato su Kotlin
+
+        - **Linguaggio:** Kotlin è un linguaggio moderno e conciso, progettato per essere interoperabile con Java e ottimizzato per lo sviluppo su JVM.
+        - **Sviluppo Mobile:** Kotlin è il linguaggio ufficiale per lo sviluppo Android, grazie alla sua capacità di ridurre il boilerplate rispetto a Java. È utilizzato con il framework **Jetpack** e con **Kotlin Coroutines** per la gestione asincrona.
+        - **Sviluppo Backend:** Kotlin può essere utilizzato anche per lo sviluppo backend con framework come **Ktor** e **Spring Boot**. Supporta inoltre tecnologie di cloud come **Kotlinx.serialization** e **Micronaut**.
+        - **Multiplatform:** Kotlin supporta lo sviluppo multipiattaforma (Kotlin Multiplatform) per condividere la logica di business tra diverse piattaforme come Android, iOS, web e desktop.
+        - **Sviluppo Web:** Kotlin è compatibile con JavaScript, permettendo di scrivere codice per il frontend in Kotlin tramite **Kotlin/JS**.
+
+        ### Benefici principali:
+        - Sintassi concisa e leggibile
+        - Interoperabilità con Java
+        - Supporto per il paradigma funzionale e la programmazione asincrona
+        
+        Notes:
+        Kotlin è un linguaggio versatile, usato principalmente nello sviluppo Android e backend. Grazie al supporto per Kotlin Multiplatform, può essere utilizzato anche per condividere la logica di business tra piattaforme diverse, mantenendo interoperabilità con Java.
+        """.trimIndent()
+            }
+        }
+
+        markdownSlide {
+            // Collegamento di Kotlin a Swift con una classe Person
+
+            // https://github.com/kotlin-hands-on/kotlin-swift-interopedia?tab=readme-ov-file
+            content {
+                """
+        ```kotlin
+        // Definizione della classe Person in Kotlin
+        data class Person(
+            val name: String,
+            val surname: String
+        )
+
+        // Funzione Kotlin per convertire una persona in un formato Swift compatibile
+        object PersonMock {
+            fun getPerson(): Person {
+                return Person(name = "John", surname = "Doe")
+            }
+        }
+        ```
+        Notes:
+        In questo esempio, Kotlin Multiplatform Mobile (KMM) permette di condividere la logica tra Kotlin e Swift. La classe `Person` viene definita in Kotlin e utilizzata in Swift. Il framework KMM genera automaticamente i binding necessari affinché Swift possa interagire con il codice Kotlin.
+        """.trimIndent()
+            }
+        }
+
+        markdownSlide {
+            content {
+                """
+                    ```swift
+        // Uso della classe Person in Swift tramite Kotlin Multiplatform Mobile (KMM)
+
+        import shared
+
+        func displayPerson() {
+            let person = PersonMock.shared.getPerson()
+            print("Person's name: \(person.name), surname: \(person.surname)")
+        }
+        ```
+                """.trimIndent()
+            }
+        }
+
+        markdownSlide {
+            // Collegamento di Kotlin a TypeScript con un metodo di Kotlin (PersonMock)
+            content {
+                """
+        ```kotlin
+        // Kotlin: Definizione di un oggetto con un metodo che ritorna un'istanza di Person
+
+        @JsExport
+        object PersonMock {
+            fun getPerson(): Person {
+                return Person(name = "John", surname = "Doe")
+            }
+        }
+
+        // Definizione della classe Person
+        data class Person(
+            val name: String,
+            val surname: String
+        )
+        ```
+
+        ```typescript
+        // TypeScript: Chiamata del metodo Kotlin dalla parte TypeScript tramite Kotlin/JS
+
+        import { PersonMock } from 'shared' // Importa il modulo Kotlin compilato in JS
+
+        function displayPerson() {
+            const person = PersonMock.getPerson() // Chiamata al metodo Kotlin
+            console.log(`Person's name: ${"\${person.name}"}, surname: ${"\${person.surname}"}`);
+        }
+
+        displayPerson();
+        ```
+
+        Notes:
+        In questo esempio, l'oggetto `PersonMock` in Kotlin contiene il metodo `getPerson()` che restituisce un'istanza della classe `Person`. Grazie a **Kotlin/JS**, il codice Kotlin viene compilato in JavaScript e può essere utilizzato in TypeScript come un modulo importato.
+        """.trimIndent()
+            }
+        }
 
 
     }
