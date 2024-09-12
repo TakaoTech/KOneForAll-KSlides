@@ -262,23 +262,11 @@ fun Presentation.WhatIsIt() {
             // Stack tecnologico attuale basato su Kotlin
             content {
                 """
-        # Stack Tecnologico Attuale
-        ## Basato su Kotlin
-
-        - **Linguaggio:** Kotlin è un linguaggio moderno e conciso, progettato per essere interoperabile con Java e ottimizzato per lo sviluppo su JVM.
-        - **Sviluppo Mobile:** Kotlin è il linguaggio ufficiale per lo sviluppo Android, grazie alla sua capacità di ridurre il boilerplate rispetto a Java. È utilizzato con il framework **Jetpack** e con **Kotlin Coroutines** per la gestione asincrona.
-        - **Sviluppo Backend:** Kotlin può essere utilizzato anche per lo sviluppo backend con framework come **Ktor** e **Spring Boot**. Supporta inoltre tecnologie di cloud come **Kotlinx.serialization** e **Micronaut**.
-        - **Multiplatform:** Kotlin supporta lo sviluppo multipiattaforma (Kotlin Multiplatform) per condividere la logica di business tra diverse piattaforme come Android, iOS, web e desktop.
-        - **Sviluppo Web:** Kotlin è compatibile con JavaScript, permettendo di scrivere codice per il frontend in Kotlin tramite **Kotlin/JS**.
-
-        ### Benefici principali:
-        - Sintassi concisa e leggibile
-        - Interoperabilità con Java
-        - Supporto per il paradigma funzionale e la programmazione asincrona
-        
-        Notes:
-        Kotlin è un linguaggio versatile, usato principalmente nello sviluppo Android e backend. Grazie al supporto per Kotlin Multiplatform, può essere utilizzato anche per condividere la logica di business tra piattaforme diverse, mantenendo interoperabilità con Java.
-        """.trimIndent()
+                ![KotlinLogo](images/kotlin_logo.png)
+            
+                Notes:
+                Kotlin è un linguaggio multi-paradigma multi-piattaforma inizialmente basato su JVM, e nato per rimpiazzare Java nello sviluppo negli IDE e tools Jetbrains.
+                """.trimIndent()
             }
         }
 
@@ -288,23 +276,23 @@ fun Presentation.WhatIsIt() {
             // https://github.com/kotlin-hands-on/kotlin-swift-interopedia?tab=readme-ov-file
             content {
                 """
-        ```kotlin
-        // Definizione della classe Person in Kotlin
-        data class Person(
-            val name: String,
-            val surname: String
-        )
-
-        // Funzione Kotlin per convertire una persona in un formato Swift compatibile
-        object PersonMock {
-            fun getPerson(): Person {
-                return Person(name = "John", surname = "Doe")
-            }
-        }
-        ```
-        Notes:
-        In questo esempio, Kotlin Multiplatform Mobile (KMM) permette di condividere la logica tra Kotlin e Swift. La classe `Person` viene definita in Kotlin e utilizzata in Swift. Il framework KMM genera automaticamente i binding necessari affinché Swift possa interagire con il codice Kotlin.
-        """.trimIndent()
+                ```kotlin
+                // Definizione della classe Person in Kotlin
+                data class Person(
+                    val name: String,
+                    val surname: String
+                )
+        
+                // Funzione Kotlin per convertire una persona in un formato Swift compatibile
+                object PersonMock {
+                    fun getPerson(): Person {
+                        return Person(name = "John", surname = "Doe")
+                    }
+                }
+                ```
+                Notes:
+                In questo esempio, Kotlin Multiplatform Mobile (KMM) permette di condividere la logica tra Kotlin e Swift. La classe `Person` viene definita in Kotlin e utilizzata in Swift. Il framework KMM genera automaticamente i binding necessari affinché Swift possa interagire con il codice Kotlin.
+                """.trimIndent()
             }
         }
 
@@ -364,8 +352,27 @@ fun Presentation.WhatIsIt() {
         """.trimIndent()
             }
         }
+    }
 
+    verticalSlides {
+        markdownSlide {
+            content {
+                //TODO Immagine Rappresentativa stack Kotlin
+                // Framework Backend
+                // Mobile
+                // Desktop
+                """
+                Notes:
+                
+                """.trimIndent()
+            }
+        }
 
+        markdownSlide {
+            """
+                
+            """.trimIndent()
+        }
     }
 
     //TODO Cos'è Kotlin
