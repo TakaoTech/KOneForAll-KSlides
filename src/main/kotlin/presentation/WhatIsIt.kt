@@ -81,7 +81,9 @@ fun Presentation.WhatIsIt() {
         ```
 
         Notes:
-        In questo esempio, un oggetto complesso di tipo `Person` viene creato da un oggetto `ReadableMap` passato dal lato JavaScript. La classe `Person` contiene due campi: `name` e `surname`. Dopo aver creato l'oggetto, viene convertito in una mappa e restituito al codice JavaScript attraverso una Promise.
+        In questo esempio, un oggetto complesso di tipo `Person` viene creato da un oggetto `ReadableMap` passato dal lato JavaScript. 
+        La classe `Person` contiene due campi: `name` e `surname`. 
+        Dopo aver creato l'oggetto, viene convertito in una mappa e restituito al codice JavaScript attraverso una Promise.
         """.trimIndent()
             }
         }
@@ -257,15 +259,17 @@ fun Presentation.WhatIsIt() {
         }
     }
 
+    // Cos'è Kotlin
     verticalSlides {
         markdownSlide {
             // Stack tecnologico attuale basato su Kotlin
+            // Framework Backend
+            // Mobile
+            // Desktop
             content {
                 """
                 ![KotlinLogo](images/kotlin_logo.png)
             
-                Notes:
-                Kotlin è un linguaggio multi-paradigma multi-piattaforma inizialmente basato su JVM, e nato per rimpiazzare Java nello sviluppo negli IDE e tools Jetbrains.
                 """.trimIndent()
             }
         }
@@ -354,32 +358,50 @@ fun Presentation.WhatIsIt() {
         }
     }
 
+
+    // What is Kotlin
+
     verticalSlides {
+        // https://kotlinlang.org/assets/kotlin-media-kit.pdf
         markdownSlide {
             content {
-                //TODO Immagine Rappresentativa stack Kotlin
-                // Framework Backend
-                // Mobile
-                // Desktop
                 """
-                Notes:
                 
+                 Notes:
+                    Kotlin è un linguaggio multi-paradigma multi-piattaforma inizialmente basato su JVM.
+                    
+                    17 maggio 2017 Google I/O, annuncio del supporto Kotlin allo sviluppo Android
+                    
+                    https://youtu.be/E8CtE7qTb-Q?si=PfDkxYOujMrkYB_K&t=4174
+               
                 """.trimIndent()
             }
         }
 
+        //Dove ho usato per la prima volta Kotlin
+        //https://github.com/samuele794/TakaoBot
+
+        //Primo commit Kotlin https://github.com/samuele794/TakaoBot/commit/24674f491b2c24b7b6919b327de495bef06501da
         markdownSlide {
-            """
+            content {
+                """
+                ttt
+                """.trimIndent()
+            }
+        }
+
+        //TODO Chi lo utilizza
+        //https://www.reddit.com/r/Bitwarden/comments/1b32bbz/going_native_the_future_of_the_bitwarden_mobile/
+        markdownSlide {
+            content {
+                """
                 
-            """.trimIndent()
+                """.trimIndent()
+            }
         }
     }
 
-    //TODO Cos'è Kotlin
-    // https://kotlinlang.org/assets/kotlin-media-kit.pdf
 
-    //TODO Chi lo utilizza
-    //https://www.reddit.com/r/Bitwarden/comments/1b32bbz/going_native_the_future_of_the_bitwarden_mobile/
 
     //TODO KSP-KAPT-ANNOTATOR PROCESSOR?
 }
