@@ -5,6 +5,10 @@ import com.kslides.Presentation
 fun Presentation.Kmp() {
     verticalSlides {
 
+        // Domanda per pubblico, come lo definisci il nativo?
+        // Flutter è nativo
+        // Mettere codice di differenza Kotlin-Java
+        // Mettere differenza pacchetto con flutter
         //https://youtu.be/E8CtE7qTb-Q?si=d0QkMOSLqfqERQ6r&t=5182
         markdownSlide {
             content {
