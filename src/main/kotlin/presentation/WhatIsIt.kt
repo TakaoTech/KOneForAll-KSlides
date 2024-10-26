@@ -401,7 +401,6 @@ fun Presentation.WhatIsIt() {
                     +"""
                     Kotlin è un linguaggio multi-paradigma multi-piattaforma inizialmente basato su JVM.
                     
-                    
                     17 maggio 2017 Google I/O, annuncio del supporto Kotlin allo sviluppo Android
                     """.trimIndent()
                 }
@@ -411,15 +410,22 @@ fun Presentation.WhatIsIt() {
         dslSlide {
             id = "youtube"
             content {
-                h2 { +"YouTube Content" }
                 iframe {
-                    width = "560"
-                    height = "315"
-                    src = "https://youtu.be/E8CtE7qTb-Q"
+                    width = "720"
+                    height = "480"
+                    src = "https://www.youtube-nocookie.com/embed/E8CtE7qTb-Q?si=iy6DvABycCwi-cY2"
                     title = "Beyond The Success Of Kotlin"
                     attributes["frameborder"] = "0"
                     attributes["allow"] = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
                     attributes["allowfullscreen"] = "true"
+                }
+
+                notes {
+                    """
+                    Consiglio di guardarlo perchè ci sono tante chicche interessanti, del tipo:
+                    Sapevate che il compilatore fino alla 2.0 non era mai stato dichiarato stabile?
+                    O altre varie chicche con Google.
+                    """.trimIndent()
                 }
             }
         }
@@ -428,11 +434,25 @@ fun Presentation.WhatIsIt() {
         //https://github.com/samuele794/TakaoBot
 
         //Primo commit Kotlin https://github.com/samuele794/TakaoBot/commit/24674f491b2c24b7b6919b327de495bef06501da
-        markdownSlide {
+        dslSlide {
             content {
-                """
-                
-                """.trimIndent()
+                div(classes = "r-stack") {
+                    a(href = "https://github.com/samuele794/TakaoBot") {
+                        img(src = "images/takaobot1.png") {
+
+                        }
+                    }
+
+                    a(
+                        classes = "fragment",
+                        href = "https://github.com/samuele794/TakaoBot/commit/24674f491b2c24b7b6919b327de495bef06501da"
+                    ) {
+                        img(src = "images/takaobot2.png") {
+
+                        }
+                    }
+                }
+
             }
         }
 
