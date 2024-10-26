@@ -1,6 +1,7 @@
 package presentation
 
 import com.kslides.Presentation
+import kotlinx.html.*
 
 fun Presentation.WhatIsIt() {
     markdownSlide {
@@ -16,8 +17,6 @@ fun Presentation.WhatIsIt() {
     }
 
     //STACKS tecnologici attuali, tipo su base typescript, dart
-
-
     verticalSlides {
         markdownSlide {
             content {
@@ -363,18 +362,65 @@ fun Presentation.WhatIsIt() {
 
     verticalSlides {
         // https://kotlinlang.org/assets/kotlin-media-kit.pdf
-        markdownSlide {
+        // https://youtu.be/E8CtE7qTb-Q?si=PfDkxYOujMrkYB_K&t=4174
+
+        dslSlide {
             content {
-                """
-                
-                 Notes:
+                script {
+                    src = "https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
+                }
+
+                div {
+                    style = """
+                        position: absolute;
+                        bottom: 0px;
+                        right: 100px;
+                        width: 100px;
+                        height: 100px;
+                    """.trimIndent()
+
+                    unsafe {
+                        raw(
+                            """
+                            <lottie-player src="./mascot.json"  speed="1" style="width: 300px; height: 300px;" loop="" autoplay=""></lottie-player>
+                        """.trimIndent()
+                        )
+                    }
+                }
+
+                h3 {
+                    s { +"cross-platform" }
+                    +" multi-platform"
+                }
+
+                h3 {
+                    +"multi-purpose"
+                }
+
+                notes {
+                    +"""
                     Kotlin è un linguaggio multi-paradigma multi-piattaforma inizialmente basato su JVM.
                     
-                    17 maggio 2017 Google I/O, annuncio del supporto Kotlin allo sviluppo Android
                     
-                    https://youtu.be/E8CtE7qTb-Q?si=PfDkxYOujMrkYB_K&t=4174
-               
-                """.trimIndent()
+                    17 maggio 2017 Google I/O, annuncio del supporto Kotlin allo sviluppo Android
+                    """.trimIndent()
+                }
+            }
+        }
+
+        dslSlide {
+            id = "youtube"
+            content {
+                h2 { +"YouTube Content" }
+                iframe {
+                    width = "560"
+                    height = "315"
+                    src = "https://youtu.be/E8CtE7qTb-Q"
+                    title = "Beyond The Success Of Kotlin"
+                    attributes["frameborder"] = "0"
+                    attributes["allow"] = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
+                    attributes["allowfullscreen"] = "true"
+                }
             }
         }
 
@@ -385,7 +431,7 @@ fun Presentation.WhatIsIt() {
         markdownSlide {
             content {
                 """
-                ttt
+                
                 """.trimIndent()
             }
         }
@@ -400,7 +446,6 @@ fun Presentation.WhatIsIt() {
             }
         }
     }
-
 
 
     //TODO KSP-KAPT-ANNOTATOR PROCESSOR?

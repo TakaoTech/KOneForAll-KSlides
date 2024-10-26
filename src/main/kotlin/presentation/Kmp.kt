@@ -62,5 +62,7 @@ fun Presentation.Kmp() {
         // Meme 3.1 Dukat
         // https://github.com/Kotlin/dukat
         // https://github.com/karakum-team/karakum
+
+        // Desktop
     }
 }
