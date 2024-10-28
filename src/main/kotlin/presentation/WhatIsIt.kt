@@ -430,6 +430,33 @@ fun Presentation.WhatIsIt() {
             }
         }
 
+        dslSlide {
+            content {
+                h1 {
+                    +"A quali linguaggi si è ispirato?"
+                }
+
+                notes {
+                    +"""
+                    - Java
+                    - C#
+                    - Scala
+                    - Groovy
+                    - Python
+                    - Gosu https://gosu-lang.github.io/docs.html
+                    """.trimIndent()
+                }
+            }
+        }
+
+        markdownSlide {
+            content {
+                """
+                ![Kotlin Inspiration](images/kotlin-languages.png)    
+                """.trimIndent()
+            }
+        }
+
         //Dove ho usato per la prima volta Kotlin
         //https://github.com/samuele794/TakaoBot
 
@@ -458,11 +485,67 @@ fun Presentation.WhatIsIt() {
 
         //TODO Chi lo utilizza
         //https://www.reddit.com/r/Bitwarden/comments/1b32bbz/going_native_the_future_of_the_bitwarden_mobile/
-        markdownSlide {
+        dslSlide {
             content {
-                """
-                
-                """.trimIndent()
+                div(classes = "r-stack") {
+                    a(
+                        classes = "fragment",
+                        href = "https://doordash.engineering/2021/05/04/migrating-from-python-to-kotlin-for-our-backend-services/",
+                    ) {
+                        img(src = "images/doordash-kotlin.png")
+                    }
+
+                    a(
+                        classes = "fragment",
+                        href = "https://medium.com/insiden26/5-reasons-why-n26-is-moving-to-kotlin-f920b184ab58"
+                    ) {
+                        img(src = "images/n26-kotlin.png")
+                    }
+
+                    a(
+                        classes = "fragment",
+                        href = "https://github.com/navikt?q=&type=all&language=kotlin&sort="
+                    ) {
+                        img(src = "images/norvegia-kotlin.png")
+                    }
+
+                    div(
+                        classes = "fragment"
+                    ) {
+                        img(
+                            src = "images/pagopa-kotlin.png"
+                        )
+                    }
+
+                    a(
+                        classes = "fragment",
+                        href = "https://medium.com/mcdonalds-technical-blog/mobile-multiplatform-development-at-mcdonalds-3b72c8d44ebc"
+                    ) {
+                        img(
+                            src = "images/mc-kotlin.png"
+                        )
+                    }
+
+                    a(
+                        classes = "fragment",
+                        href = "https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23"
+                    ) {
+                        img(
+                            src = "images/netflix-kotlin.png"
+                        )
+                    }
+
+                    a(
+                        classes = "fragment",
+                        href = "https://github.com/Netflix/dgs-framework"
+                    ) {
+                        img(
+                            src = "images/netflixdgs-kotlin.png"
+                        )
+                    }
+
+
+                }
             }
         }
     }
