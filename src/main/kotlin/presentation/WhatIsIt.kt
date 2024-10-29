@@ -483,11 +483,17 @@ fun Presentation.WhatIsIt() {
             }
         }
 
-        //TODO Chi lo utilizza
         //https://www.reddit.com/r/Bitwarden/comments/1b32bbz/going_native_the_future_of_the_bitwarden_mobile/
         dslSlide {
             content {
                 div(classes = "r-stack") {
+                    a(
+                        classes = "fragment",
+                        href = "https://spring.io/blog/2017/01/04/introducing-kotlin-support-in-spring-framework-5-0"
+                    ) {
+                        img(src = "images/spring-kotlin.png")
+                    }
+
                     a(
                         classes = "fragment",
                         href = "https://doordash.engineering/2021/05/04/migrating-from-python-to-kotlin-for-our-backend-services/",
@@ -500,6 +506,13 @@ fun Presentation.WhatIsIt() {
                         href = "https://medium.com/insiden26/5-reasons-why-n26-is-moving-to-kotlin-f920b184ab58"
                     ) {
                         img(src = "images/n26-kotlin.png")
+                    }
+
+                    a(
+                        classes = "fragment",
+                        href = "https://vinted.engineering/2017/05/29/kotlin/"
+                    ) {
+                        img(src = "images/vinted-kotlin.png")
                     }
 
                     a(
@@ -541,6 +554,15 @@ fun Presentation.WhatIsIt() {
                     ) {
                         img(
                             src = "images/netflixdgs-kotlin.png"
+                        )
+                    }
+
+                    a(
+                        classes = "fragment",
+                        href = "https://www.reddit.com/r/Bitwarden/comments/1b32bbz/going_native_the_future_of_the_bitwarden_mobile/"
+                    ) {
+                        img(
+                            src = "images/bitwarden-kotlin.png"
                         )
                     }
 
