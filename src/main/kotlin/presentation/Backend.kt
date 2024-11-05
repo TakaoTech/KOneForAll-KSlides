@@ -1,6 +1,9 @@
 package presentation
 
 import com.kslides.Presentation
+import kotlinx.html.a
+import kotlinx.html.div
+import kotlinx.html.img
 
 fun Presentation.Backend() {
 
@@ -8,21 +11,41 @@ fun Presentation.Backend() {
     verticalSlides {
 
         // Spring Java
-        markdownSlide {
+        dslSlide {
             content {
-                """
-                    
-                """.trimIndent()
+                img(src = "images/spring-logo.png")
             }
         }
 
         // Spring Kotlin
         // https://docs.spring.io/spring-boot/reference/features/kotlin.html
-        markdownSlide {
+        dslSlide {
             content {
-                """
-                    
-                """.trimIndent()
+                div(classes = "r-stack r-stretch") {
+                    a(
+                        href = "https://spring.io/blog/2017/01/04/introducing-kotlin-support-in-spring-framework-5-0"
+                    ) {
+                        img(
+                            src = "images/spring-kotlin.png"
+                        )
+                    }
+
+                    a(
+                        classes = "fragment",
+                        href = "https://docs.spring.io/spring-boot/reference/features/kotlin.html"
+                    ) {
+                        img(
+                            src = "images/spring-kotlin2.png"
+                        )
+                    }
+                }
+
+                notes {
+                    """
+                    Starter: https://start.spring.io/
+                    """.trimIndent()
+                }
+
             }
         }
     }

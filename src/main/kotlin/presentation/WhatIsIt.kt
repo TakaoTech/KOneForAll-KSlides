@@ -486,26 +486,17 @@ fun Presentation.WhatIsIt() {
         //https://www.reddit.com/r/Bitwarden/comments/1b32bbz/going_native_the_future_of_the_bitwarden_mobile/
         dslSlide {
             content {
-                div(classes = "r-stack") {
-                    a(
-                        classes = "fragment",
-                        href = "https://spring.io/blog/2017/01/04/introducing-kotlin-support-in-spring-framework-5-0"
-                    ) {
-                        img(src = "images/spring-kotlin.png")
-                    }
+                div(
+                    classes = "r-stack r-stretch"
+                ) {
 
                     a(
-                        classes = "fragment",
-                        href = "https://doordash.engineering/2021/05/04/migrating-from-python-to-kotlin-for-our-backend-services/",
-                    ) {
-                        img(src = "images/doordash-kotlin.png")
-                    }
-
-                    a(
-                        classes = "fragment",
                         href = "https://medium.com/insiden26/5-reasons-why-n26-is-moving-to-kotlin-f920b184ab58"
                     ) {
-                        img(src = "images/n26-kotlin.png")
+                        img(
+                            classes = "r-stretch",
+                            src = "images/n26-kotlin.png"
+                        )
                     }
 
                     a(

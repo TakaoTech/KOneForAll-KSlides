@@ -1,7 +1,7 @@
 package presentation
 
 import com.kslides.Presentation
-import kotlinx.html.h1
+import kotlinx.html.h2
 import kotlinx.html.img
 
 fun Presentation.Kmp() {
@@ -14,7 +14,7 @@ fun Presentation.Kmp() {
         //https://youtu.be/E8CtE7qTb-Q?si=d0QkMOSLqfqERQ6r&t=5182
         dslSlide {
             content {
-                h1 {
+                h2 {
                     +"Per voi lo sviluppo Flutter, è nativo?"
                 }
             }
