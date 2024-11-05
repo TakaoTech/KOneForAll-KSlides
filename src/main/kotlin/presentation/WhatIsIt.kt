@@ -421,7 +421,7 @@ fun Presentation.WhatIsIt() {
                 }
 
                 notes {
-                    """
+                    +"""
                     Consiglio di guardarlo perchè ci sono tante chicche interessanti, del tipo:
                     Sapevate che il compilatore fino alla 2.0 non era mai stato dichiarato stabile?
                     O altre varie chicche con Google.

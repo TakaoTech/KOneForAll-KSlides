@@ -41,7 +41,7 @@ fun Presentation.Backend() {
                 }
 
                 notes {
-                    """
+                    +"""
                     Starter: https://start.spring.io/
                     """.trimIndent()
                 }
@@ -54,15 +54,21 @@ fun Presentation.Backend() {
     verticalSlides {
 
         // quarkus Java
-        markdownSlide {
+        dslSlide {
             content {
-                """
-                    
-                """.trimIndent()
+                a(
+                    href = "https://quarkus.io/"
+                ) {
+                    img(
+                        src = "images/quarkus-logo.png"
+                    )
+                }
             }
         }
 
         // quarkus Kotlin
+        // https://quarkus.io/guides/kotlin
+        // https://github.com/u-ways/kotlin-quarkus-realworld-example-app
         markdownSlide {
             content {
                 """
@@ -83,13 +89,13 @@ fun Presentation.Backend() {
         }
 
         // Startup Time Spring VS Ktor (graalVM inclusa)
-        markdownSlide {
-            content {
-                """
-                    
-                """.trimIndent()
-            }
-        }
+//        markdownSlide {
+//            content {
+//                """
+//
+//                """.trimIndent()
+//            }
+//        }
     }
 
     //Microservizi

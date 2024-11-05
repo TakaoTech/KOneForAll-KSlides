@@ -1,6 +1,7 @@
 package presentation
 
 import com.kslides.Presentation
+import kotlinx.html.a
 import kotlinx.html.h2
 import kotlinx.html.img
 
@@ -29,7 +30,7 @@ fun Presentation.Kmp() {
             content {
                 img(src = "images/kmp-androidx.png")
                 notes {
-                    """
+                    +"""
                     Specificare gli attuali livelli di supporto:
                     - Tier 1: Test con CI sia Host che device. Sorgente e Binary con compatibilità tracciata
                     - Tier 2: Test parziali CI su Host
@@ -41,6 +42,20 @@ fun Presentation.Kmp() {
 
         // Meme 2 - React Native Kotlin Bridge
         // https://github.com/voize-gmbh/reakt-native-toolkit
+
+        dslSlide {
+            content {
+                a(href = "https://github.com/voize-gmbh/reakt-native-toolkit") {
+                    img(src = "images/react-bridge-kotlin.png")
+                }
+
+                notes {
+                    +"""
+                    reakt-native-toolkit
+                    """.trimIndent()
+                }
+            }
+        }
 
         //Progetto ispirativo, obbiettivo di tirare fuori la risposta di aggiungere un backend
         // https://github.com/Abdelrahman-SW/Coffee-Store-App
