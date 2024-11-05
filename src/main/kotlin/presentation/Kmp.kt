@@ -1,6 +1,8 @@
 package presentation
 
 import com.kslides.Presentation
+import kotlinx.html.h1
+import kotlinx.html.img
 
 fun Presentation.Kmp() {
     verticalSlides {
@@ -10,11 +12,11 @@ fun Presentation.Kmp() {
         // Mettere codice di differenza Kotlin-Java
         // Mettere differenza pacchetto con flutter
         //https://youtu.be/E8CtE7qTb-Q?si=d0QkMOSLqfqERQ6r&t=5182
-        markdownSlide {
+        dslSlide {
             content {
-                """
-                SHARE
-                """.trimIndent()
+                h1 {
+                    +"Per voi lo sviluppo Flutter, è nativo?"
+                }
             }
         }
 
@@ -23,11 +25,17 @@ fun Presentation.Kmp() {
         //https://developer.android.com/kotlin/multiplatform
         //https://developer.android.com/jetpack/androidx/releases/paging
         //https://android.googlesource.com/platform/frameworks/support/+/90c97683b9811e57c63ddb93d87b6fa21f02bcde/paging/paging-common/build.gradle
-        markdownSlide {
+        dslSlide {
             content {
-                """
-                
-                """.trimIndent()
+                img(src = "images/kmp-androidx.png")
+                notes {
+                    """
+                    Specificare gli attuali livelli di supporto:
+                    - Tier 1: Test con CI sia Host che device. Sorgente e Binary con compatibilità tracciata
+                    - Tier 2: Test parziali CI su Host
+                    - Tier 3: No test CI
+                    """.trimIndent()
+                }
             }
         }
 
