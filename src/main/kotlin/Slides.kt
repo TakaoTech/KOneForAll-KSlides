@@ -53,6 +53,8 @@ fun main() {
             theme = PresentationTheme.DRACULA
             enableSpeakerNotes = true
             slideNumber = "c/t"
+            width = "100%"
+            height = "100%"
 //            disableLayout = true
             menuConfig {
                 numbers = true

@@ -1,6 +1,7 @@
 package presentation
 
 import com.kslides.Presentation
+import kotlinx.css.html
 import kotlinx.html.*
 
 fun Presentation.Kmp() {
@@ -158,7 +159,160 @@ fun Presentation.Kmp() {
             }
         }
         // https://github.com/ozontech/kelp
+        dslSlide {
+            content {
+
+                div {
+                    style = """
+                    gap: 10px;
+                    """.trimIndent()
+
+                    img(src = "images/kelp.svg") {
+
+                    }
+                }
+
+                a(href = "https://github.com/ozontech/kelp") {
+                    +"kelp"
+                }
+
+                notes {
+                    + """
+                    Kelp è un plugin per Android Studio per supportare lo sviluppo di un design system custom    
+                    """.trimIndent()
+                }
+            }
+        }
+
+        dslSlide {
+            content {
+                div {
+                    style = """
+                    overflow: auto; /* Rende scrollabile il div */
+                    max-height: 710px; /* Imposta un'altezza massima per limitare lo scroll */
+                    margin: 20px; /* Aggiunge un margine attorno al div */
+                    padding: 10px; /* Opzionale: aggiunge uno spazio interno */
+                    border: 1px solid #ccc; /* Opzionale: bordo per visibilità */
+                    """.trimIndent()
+                    table {
+                        thead {
+                            tr {
+                                th { +"Feature" }
+                                th { +"Screenshot" }
+                            }
+                        }
+                        tbody {
+                            tr {
+                                tdWeightCenter(40) {
+                                    +"🔧 Customizable icon for design system "
+                                    strong { +"component functions" }
+                                }
+                                tdWeightCenter(60) {
+                                    img(src = "https://github.com/ozontech/kelp/raw/main/images/componentFunHighlighting-dark.png#gh-dark-mode-only") {
+                                        width = "600"
+                                    }
+                                }
+                            }
+                            tr {
+                                tdWeightCenter(40) {
+                                    +"🎨 DS "
+                                    strong { +"icons" }
+                                    +" in the code completion and gutter (where breakpoints are), like with "
+                                    code { +"R.drawable" }
+                                }
+                                tdWeightCenter(60) {
+                                    img(src = "https://github.com/ozontech/kelp/raw/main/images/iconsRendering-dark.png#gh-dark-mode-only") {
+                                        width = "600"
+                                    }
+                                }
+                            }
+                            tr {
+                                tdWeightCenter(40) {
+                                    +"🌈 "
+                                    strong { +"Colors" }
+                                    +" from DS palette in the code completion and gutter (where breakpoints are), like with "
+                                    code { +"R.color" }
+                                }
+                                tdWeightCenter(60) {
+                                    img(src = "https://github.com/ozontech/kelp/raw/main/images/colorPreview-dark.png#gh-dark-mode-only") {
+                                        width = "600"
+                                    }
+                                }
+                            }
+                            tr {
+                                tdWeightCenter(40) {
+                                    +"📱 Installing the apk file of the "
+                                    strong { +"demo app" }
+                                    +" (showcase app) on an Android device, as well as navigating to the component page in it via an Intention Action"
+                                }
+                                tdWeightCenter(60) {
+                                    img(src = "https://github.com/ozontech/kelp/raw/main/images/demoApkInstalling-dark.png#gh-dark-mode-only") {
+                                        width = "600"
+                                    }
+                                }
+                            }
+                            tr {
+                                tdWeightCenter(40) {
+                                    +"📱 The same via the gutter icons near "
+                                    strong { +"function declarations" }
+                                }
+                                tdWeightCenter(60) {
+                                    img(src = "https://github.com/ozontech/kelp/raw/main/images/demoApkGutter-dark.png#gh-dark-mode-only") {
+                                        width = "600"
+                                    }
+                                }
+                            }
+                            tr {
+                                tdWeightCenter(40) {
+                                    +"🖼 "
+                                    strong { +"KDoc Images" }
+                                    +" Rendering"
+                                }
+                                tdWeightCenter(60) {
+                                    img(src = "https://github.com/ozontech/kelp/raw/main/images/kdocImagesRendering-dark.png#gh-dark-mode-only") {
+                                        width = "600"
+                                    }
+                                }
+                            }
+                            tr {
+                                tdWeightCenter(40) {
+                                    +"⌨️ Handy "
+                                    strong { +"live templates" }
+                                    +"(customizable; after applying, automatically opens code completion popup)"
+                                }
+                                tdWeightCenter(60) {
+                                    img(src = "https://github.com/ozontech/kelp/raw/main/images/live-templates-dark.png#gh-dark-mode-only") {
+                                        width = "600"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
         // https://github.com/alexzhirkevich/compose-cupertino
+        dslSlide {
+            content {
+                video {
+                    autoPlay = true
+                    controls = true
+                    loop = true
+                    style = """
+                    width: 25%;
+                    """.trimIndent()
+                    src = "https://github.com/alexzhirkevich/compose-cupertino/assets/63979218/982485e8-c581-4c0e-8302-0cb257acd892"
+                }
+            }
+        }
+
+        dslSlide {
+            content {
+                img(src = "images/compose-cupertino.png")
+            }
+        }
 
         // https://github.com/alexzhirkevich/compottie
 
@@ -175,3 +329,19 @@ fun Presentation.Kmp() {
         // Desktop
     }
 }
+
+@HtmlTagMarker
+inline fun TR.tdWeightCenter(
+    percentage: Int,
+    classes: String? = null,
+    crossinline block: TD.() -> Unit = {}
+) =
+    td(classes) {
+        style = """
+        width: $percentage%;
+        text-align: center;
+        vertical-align: middle;
+        """.trimIndent()
+        block()
+    }
+
