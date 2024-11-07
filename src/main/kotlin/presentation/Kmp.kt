@@ -1,9 +1,7 @@
 package presentation
 
 import com.kslides.Presentation
-import kotlinx.html.a
-import kotlinx.html.h2
-import kotlinx.html.img
+import kotlinx.html.*
 
 fun Presentation.Kmp() {
     verticalSlides {
@@ -40,6 +38,26 @@ fun Presentation.Kmp() {
             }
         }
 
+        dslSlide {
+            content {
+                a(
+                    href = "https://developer.android.com/jetpack/androidx/releases/paging"
+                ) {
+                    img(src = "images/paging-kmp1.png")
+                }
+            }
+        }
+
+        dslSlide {
+            content {
+                a(
+                    href = "https://developer.android.com/jetpack/androidx/releases/paging"
+                ) {
+                    img(src = "images/paging-kmp2.png")
+                }
+            }
+        }
+
         // Meme 2 - React Native Kotlin Bridge
         // https://github.com/voize-gmbh/reakt-native-toolkit
 
@@ -51,7 +69,8 @@ fun Presentation.Kmp() {
 
                 notes {
                     +"""
-                    reakt-native-toolkit
+                    reakt-native-toolkit, un tool per creare automaticamente 
+                    il bridge del codice Kotlin con React Native
                     """.trimIndent()
                 }
             }
@@ -70,7 +89,74 @@ fun Presentation.Kmp() {
         // Compose - Multiplatform
 
         // https://github.com/Kotlin/Storytale
+        dslSlide {
+            content {
+                div {
+                    style = """
+                    display: flex;
+                    gap: 10px;
+                    """.trimIndent()
+                    img(src = "images/storytale1.png") {
+                        style = """
+                        width: 50%;
+                        height: auto;
+                        object-fit: contain;
+                        """.trimIndent()
+                    }
+                    img(src = "images/storytale2.png") {
+                        style = """
+                        width: 50%;
+                        height: auto;
+                        object-fit: contain;
+                        """.trimIndent()
+                    }
+                }
+
+                a(href = "https://github.com/Kotlin/Storytale") {
+                    +"Storytale"
+                }
+            }
+        }
         // https://github.com/popovanton0/Blueprint
+        dslSlide {
+            content {
+
+                div {
+                    style = """
+                    display: flex;
+                    gap: 10px;
+                    """.trimIndent()
+
+                    video {
+                        autoPlay = true
+//                        controls = true
+                        loop = true
+                        style = """
+                        width: 50%;
+                        height: auto;
+                        object-fit: contain;
+                        """.trimIndent()
+
+                        source {
+                            src = "videos/arrow-angle-anim.mp4"
+                            type = "video/mp4"
+                        }
+                    }
+
+                    img(src = "images/blueprint-kmp.png") {
+                        style = """
+                        width: 50%;
+                        height: auto;
+                        object-fit: contain;
+                        """.trimIndent()
+                    }
+                }
+
+                a(href = "https://github.com/popovanton0/Blueprint") {
+                    +"Blueprint"
+                }
+            }
+        }
         // https://github.com/ozontech/kelp
         // https://github.com/alexzhirkevich/compose-cupertino
 

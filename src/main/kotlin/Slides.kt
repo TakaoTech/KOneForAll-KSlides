@@ -53,7 +53,7 @@ fun main() {
             theme = PresentationTheme.DRACULA
             enableSpeakerNotes = true
             slideNumber = "c/t"
-
+//            disableLayout = true
             menuConfig {
                 numbers = true
             }
@@ -69,14 +69,14 @@ fun main() {
 
             css +=
                 """
-        #ghsrc {
-          font-size: 30px;
-          text-decoration: underline;
-        }  
-        img[alt=revealjs-image] { 
-          width: 1000px; 
-        }
-        """
+                #ghsrc {
+                  font-size: 30px;
+                  text-decoration: underline;
+                }  
+                img[alt=revealjs-image] { 
+                  width: 1000px; 
+                }
+                """
 
             WhatIsIt()
             Kmp()
