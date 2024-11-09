@@ -1,7 +1,7 @@
 package presentation
 
 import com.kslides.Presentation
-import kotlinx.css.html
+import com.kslides.include
 import kotlinx.html.*
 
 fun Presentation.Kmp() {
@@ -177,7 +177,7 @@ fun Presentation.Kmp() {
                 }
 
                 notes {
-                    + """
+                    +"""
                     Kelp è un plugin per Android Studio per supportare lo sviluppo di un design system custom    
                     """.trimIndent()
                 }
@@ -303,7 +303,8 @@ fun Presentation.Kmp() {
                     style = """
                     width: 25%;
                     """.trimIndent()
-                    src = "https://github.com/alexzhirkevich/compose-cupertino/assets/63979218/982485e8-c581-4c0e-8302-0cb257acd892"
+                    src =
+                        "https://github.com/alexzhirkevich/compose-cupertino/assets/63979218/982485e8-c581-4c0e-8302-0cb257acd892"
                 }
             }
         }
@@ -319,8 +320,90 @@ fun Presentation.Kmp() {
         // Meme 3 - Il WEB
 
         // https://github.com/JetBrains/kotlin-wrappers
+        dslSlide {
+            content {
+                img(src = "images/kotlin-wrappers.png")
+
+                notes {
+                    """
+                    Wrapper Kotlin di librerie JavaScript famose.
+                    Nella prossima c'è la lista librerie
+                    """.trimIndent()
+                }
+            }
+        }
+
+        htmlSlide {
+            content {
+                val file = "src/main/resources/public/kotlin-wrappers.html"
+                include(file, escapeHtml = false)
+            }
+        }
+
         // https://github.com/aerialist7/kotlin-mui-showcase
+        dslSlide {
+            content {
+                a(href = "https://aerialist7.github.io/kotlin-mui-showcase/") {
+                    +"MUI"
+                }
+
+                notes {
+                    """
+                    Showcase Material-UI Web in Kotlin   
+                    """.trimIndent()
+                }
+            }
+        }
+
+        // https://github.com/varabyte/kobweb
         // https://github.com/stevdza-san/KotlinBootstrap
+        dslSlide {
+            content {
+                div {
+                    style = """
+                    display: flex;
+                    gap: 10px;
+                    """.trimIndent()
+
+                    video {
+                        attributes["onloadstart"] = "this.playbackRate = 2.5;"
+                        autoPlay = true
+//                        controls = true
+                        loop = true
+                        style = """
+                        width: 50%;
+                        height: auto;
+                        object-fit: contain;
+                        """.trimIndent()
+
+                        source {
+                            src = "videos/kobweb-demo.mp4"
+                            type = "video/mp4"
+                        }
+                    }
+
+                    div {
+                        style = """
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center; /* Centra verticalmente */
+                        justify-content: center; /* Centra orizzontalmente */
+                        width: 50%;
+                        """.trimIndent()
+
+                        h2 {
+                            +"""
+                            K🕸️bweb
+                            """.trimIndent()
+                        }
+
+                        a("https://github.com/stevdza-san/KotlinBootstrap") {
+                            img(src = "https://github.com/stevdza-san/KotlinBootstrap/raw/master/ASSETS/logo.svg")
+                        }
+                    }
+                }
+            }
+        }
 
         // Meme 3.1 Dukat
         // https://github.com/Kotlin/dukat
