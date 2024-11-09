@@ -5,6 +5,7 @@ import com.kslides.kslides
 import com.pambrose.srcref.Api.srcrefUrl
 import presentation.Backend
 import presentation.Kmp
+import presentation.Svarioni
 import presentation.WhatIsIt
 
 fun main() {
@@ -83,6 +84,7 @@ fun main() {
             WhatIsIt()
             Kmp()
             Backend()
+            Svarioni()
         }
     }
 }

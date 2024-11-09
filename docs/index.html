@@ -87,229 +87,6 @@ Spingere sulla domanda "Uno strumento quando è definito enterprise?"
         <section>
           <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical="">
             <script type="text/template">
-![JSStack](images/js-stack.png)
-
-Notes:
-TypeScript è un superset tipizzato di JavaScript.
-
-Usi principali:
-- Frontend: React/ReactNative, Angular, Vue.js, Svelte, Next.js
-- Backend: NodeJS
-
-Quando uno strumento è enterprise?
-Ricordiamo che JS è stato scritto in 10 giorni
-</script>
-          </section>
-          
-          <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical="">
-            <script type="text/template">
-```kotlin
-// MyNativeModule.kt
-package com.example
-
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactContextBaseJavaModule
-import com.facebook.react.bridge.ReactMethod
-import com.facebook.react.bridge.Promise
-import com.facebook.react.bridge.ReadableMap
-
-data class Person(val name: String, val surname: String)
-
-class MyNativeModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
-
-    override fun getName(): String {
-        return "MyNativeModule"
-    }
-
-    @ReactMethod
-    fun createPerson(personMap: ReadableMap, promise: Promise) {
-        try {
-            // Estrai i dati dalla mappa
-            val name = personMap.getString("name") ?: ""
-            val surname = personMap.getString("surname") ?: ""
-
-            // Crea un oggetto Person
-            val person = Person(name, surname)
-
-            // Converti l'oggetto in una mappa da restituire a JavaScript
-            val personMap = mapOf("name" to person.name, "surname" to person.surname)
-            
-            promise.resolve(personMap)
-        } catch (e: Exception) {
-            promise.reject("ERROR", e)
-        }
-    }
-}
-```
-
-Notes:
-In questo esempio, un oggetto complesso di tipo `Person` viene creato da un oggetto `ReadableMap` passato dal lato JavaScript. 
-La classe `Person` contiene due campi: `name` e `surname`. 
-Dopo aver creato l'oggetto, viene convertito in una mappa e restituito al codice JavaScript attraverso una Promise.
-</script>
-          </section>
-          
-        </section>
-        
-        <section>
-          <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical="">
-            <script type="text/template">
-![DartStack](images/dart-stack.png)
-
-Notes:
-Dart è un linguaggio di programmazione sviluppato da Google.
-Presentato nell'ottobre 2011, come teorico sostituto di JS, per poi riprogettarlo per uso con Flutter rilasciato nel 2017.
-
-Con la versione di dart 2.12 uscita il 3 marzo 2021, ma resa stabile dalla 3.0 del 10 maggio 2023.
-Flutter, utilizzato per creare app mobile e web cross-platform.
-
-Quando uno strumento è enterprise?
-Google ha tirato su flutter nel 2015 e "nella pratica" salvato dart dal suo declino infilandocelo a "forza".
-</script>
-          </section>
-          
-          <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical="">
-            <script type="text/template">
-**Android (Kotlin):**
-
-```kotlin
-import io.flutter.embedding.android.FlutterActivity
-import io.flutter.plugin.common.MethodCall
-import io.flutter.plugin.common.MethodChannel
-
-class MainActivity : FlutterActivity() {
-    private val CHANNEL = "com.example.myapp/data"
-
-    override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
-        // ...
-        val methodChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANNEL)
-        methodChannel.setMethodCallHandler { call, result ->
-            if (call.method == "getData") {
-                val data = getDataFromAndroid() // Funzione per ottenere i dati da Android
-                result.success(data)
-            } else {
-                result.notImplemented()
-            }
-        }
-    }
-}
-```
-</script>
-          </section>
-          
-          <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical="">
-            <script type="text/template">
-            **Flutter (Dart):**
-
-```dart
-import 'package:flutter/services.dart';
-
-const platform = MethodChannel('com.example.myapp/data');
-
-Future<dynamic> getDataFromAndroid() async {
-  try {
-    final dynamic result = await platform.invokeMethod('getData');
-    return result; // Utilizzare i dati ricevuti
-  } on PlatformException catch (e) {
-    // Gestione degli errori
-  }
-}
-```
-</script>
-          </section>
-          
-          <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical="">
-            <script type="text/template">
-```dart
-// Dart: Definizione della classe Person e utilizzo di MethodChannel
-
-import 'package:flutter/services.dart';
-
-class Person {
-  final String name;
-  final String surname;
-
-  Person(this.name, this.surname);
-
-  Map<String, String> toMap() {
-    return {
-      'name': name,
-      'surname': surname,
-    };
-  }
-}
-
-class NativeModule {
-  static const platform = MethodChannel('com.example/native');
-
-  Future<Map<String, String>?> createPerson(Person person) async {
-    try {
-      final result = await platform.invokeMethod('createPerson', person.toMap());
-      return Map<String, String>.from(result);
-    } catch (e) {
-      print("Failed to create person: '${e.message}'.");
-      return null;
-    }
-  }
-}
-```     
-
-Notes:
-In questo esempio, utilizziamo un `MethodChannel` per comunicare tra Flutter (Dart) e Kotlin (Android). Un oggetto `Person` viene creato in Dart e inviato al codice nativo tramite una mappa. Kotlin riceve la mappa, crea un'istanza della classe `Person`, e restituisce i dati al codice Dart.
-</script>
-          </section>
-          
-          <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical="">
-            <script type="text/template">
-            ```kotlin
-// Kotlin: Implementazione del Platform Channel in Android
-
-package com.example
-
-import androidx.annotation.NonNull
-import io.flutter.embedding.engine.plugins.FlutterPlugin
-import io.flutter.plugin.common.MethodCall
-import io.flutter.plugin.common.MethodChannel
-
-data class Person(val name: String, val surname: String)
-
-class NativeModulePlugin : FlutterPlugin, MethodChannel.MethodCallHandler {
-
-    private lateinit var channel: MethodChannel
-
-    override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "com.example/native")
-        channel.setMethodCallHandler(this)
-    }
-
-    override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: MethodChannel.Result) {
-        when (call.method) {
-            "createPerson" -> {
-                val name = call.argument<String>("name") ?: ""
-                val surname = call.argument<String>("surname") ?: ""
-
-                val person = Person(name, surname)
-                val personMap = mapOf("name" to person.name, "surname" to person.surname)
-
-                result.success(personMap)
-            }
-            else -> result.notImplemented()
-        }
-    }
-
-    override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
-        channel.setMethodCallHandler(null)
-    }
-}
-```
-</script>
-          </section>
-          
-        </section>
-        
-        <section>
-          <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical="">
-            <script type="text/template">
 ![KotlinLogo](images/kotlin_logo.png)
 </script>
           </section>
@@ -1135,7 +912,30 @@ width: 50%;">
         </section>
         
         <section>
-          <section data-background-color="#27282c" data-markdown="" data-separator="" data-separator-notes="^Notes?:" data-separator-vertical=""></section>
+          <section data-background-color="#27282c">
+            <img class="r-stretch" src="images/ktor-kmer.png" style="width = &quot;615px&quot;
+height = &quot;720px&quot;">
+          </section>
+          
+          <section data-background-color="#27282c">
+            <img src="images/ktor-logo.png" style="background-color: rgba(255, 255, 255, 0.5);
+padding: 20px;">
+            <aside class="notes">Ktor &egrave; un framework completamente in Kotlin per creazione di backend,
+ma Ktor &egrave; anche un client HTTP.
+https://start.ktor.io/settings
+
+https://ktor.io/docs/welcome.html
+
+</aside>
+          </section>
+          
+          <section data-background-color="#27282c">
+            <img src="images/ktor-pipeline.png">
+            <aside class="notes"> Note negative:
+Creazione di plugin custom
+https://ktor.io/docs/server-custom-plugins.html
+https://ximedes.com/blog/2020-09-17/role-based-authorization-in-ktor</aside>
+          </section>
           
         </section>
         

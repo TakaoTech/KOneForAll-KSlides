@@ -4,6 +4,7 @@ import com.kslides.Presentation
 import kotlinx.html.a
 import kotlinx.html.div
 import kotlinx.html.img
+import kotlinx.html.style
 
 fun Presentation.Backend() {
 
@@ -79,23 +80,59 @@ fun Presentation.Backend() {
     }
 
     // Ktor
+    // https://betterprogramming.pub/create-a-kotlin-native-web-server-with-ktor-and-sqldelight-postgressql-44485267c340
     verticalSlides {
-        markdownSlide {
+        dslSlide {
             content {
-                """
-                    
-                """.trimIndent()
+                img(
+                    classes = "r-stretch",
+                    src = "images/ktor-kmer.png"
+                ) {
+                    style = """
+                        width = "615px"
+                        height = "720px"
+                        """.trimIndent()
+                }
             }
         }
 
-        // Startup Time Spring VS Ktor (graalVM inclusa)
-//        markdownSlide {
-//            content {
-//                """
-//
-//                """.trimIndent()
-//            }
-//        }
+        dslSlide {
+            content {
+                img(src = "images/ktor-logo.png") {
+                    style = """
+                    background-color: rgba(255, 255, 255, 0.5);
+                    padding: 20px;
+                    """.trimIndent()
+                }
+
+                notes {
+                    + """
+                    Ktor è un framework completamente in Kotlin per creazione di backend,
+                    ma Ktor è anche un client HTTP.
+                    https://start.ktor.io/settings
+                    
+                    https://ktor.io/docs/welcome.html
+                    
+                   
+                    """.trimIndent()
+                }
+            }
+        }
+
+        dslSlide {
+            content {
+                img(src = "images/ktor-pipeline.png")
+
+                notes {
+                    + """
+                     Note negative:
+                    Creazione di plugin custom
+                    https://ktor.io/docs/server-custom-plugins.html
+                    https://ximedes.com/blog/2020-09-17/role-based-authorization-in-ktor
+                    """.trimIndent()
+                }
+            }
+        }
     }
 
     //Microservizi

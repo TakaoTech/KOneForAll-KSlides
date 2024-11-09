@@ -16,20 +16,20 @@ fun Presentation.WhatIsIt() {
         }
     }
 
-    //STACKS tecnologici attuali, tipo su base typescript, dart
+/*    //STACKS tecnologici attuali, tipo su base typescript, dart
     verticalSlides {
         markdownSlide {
             content {
                 """
                     ![JSStack](images/js-stack.png)
-                    
+
                     Notes:
                     TypeScript è un superset tipizzato di JavaScript.
-                    
+
                     Usi principali:
                     - Frontend: React/ReactNative, Angular, Vue.js, Svelte, Next.js
                     - Backend: NodeJS
-                    
+
                     Quando uno strumento è enterprise?
                     Ricordiamo che JS è stato scritto in 10 giorni
                 """.trimIndent()
@@ -70,7 +70,7 @@ fun Presentation.WhatIsIt() {
 
                     // Converti l'oggetto in una mappa da restituire a JavaScript
                     val personMap = mapOf("name" to person.name, "surname" to person.surname)
-                    
+
                     promise.resolve(personMap)
                 } catch (e: Exception) {
                     promise.reject("ERROR", e)
@@ -80,8 +80,8 @@ fun Presentation.WhatIsIt() {
         ```
 
         Notes:
-        In questo esempio, un oggetto complesso di tipo `Person` viene creato da un oggetto `ReadableMap` passato dal lato JavaScript. 
-        La classe `Person` contiene due campi: `name` e `surname`. 
+        In questo esempio, un oggetto complesso di tipo `Person` viene creato da un oggetto `ReadableMap` passato dal lato JavaScript.
+        La classe `Person` contiene due campi: `name` e `surname`.
         Dopo aver creato l'oggetto, viene convertito in una mappa e restituito al codice JavaScript attraverso una Promise.
         """.trimIndent()
             }
@@ -97,14 +97,14 @@ fun Presentation.WhatIsIt() {
             content {
                 """
             ![DartStack](images/dart-stack.png)
-            
+
             Notes:
             Dart è un linguaggio di programmazione sviluppato da Google.
             Presentato nell'ottobre 2011, come teorico sostituto di JS, per poi riprogettarlo per uso con Flutter rilasciato nel 2017.
-            
+
             Con la versione di dart 2.12 uscita il 3 marzo 2021, ma resa stabile dalla 3.0 del 10 maggio 2023.
             Flutter, utilizzato per creare app mobile e web cross-platform.
-            
+
             Quando uno strumento è enterprise?
             Google ha tirato su flutter nel 2015 e "nella pratica" salvato dart dal suo declino infilandocelo a "forza".
         """.trimIndent()
@@ -201,7 +201,7 @@ fun Presentation.WhatIsIt() {
             }
           }
         }
-        ```     
+        ```
 
         Notes:
         In questo esempio, utilizziamo un `MethodChannel` per comunicare tra Flutter (Dart) e Kotlin (Android). Un oggetto `Person` viene creato in Dart e inviato al codice nativo tramite una mappa. Kotlin riceve la mappa, crea un'istanza della classe `Person`, e restituisce i dati al codice Dart.
@@ -256,7 +256,7 @@ fun Presentation.WhatIsIt() {
                 """.trimIndent()
             }
         }
-    }
+    }*/
 
     // Cos'è Kotlin
     verticalSlides {
@@ -357,6 +357,7 @@ fun Presentation.WhatIsIt() {
         }
     }
 
+    //TODO Dove imparare
 
     // What is Kotlin
 
