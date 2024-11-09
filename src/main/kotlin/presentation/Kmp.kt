@@ -301,7 +301,7 @@ fun Presentation.Kmp() {
                     controls = true
                     loop = true
                     style = """
-                    width: 25%;
+                    width: 20%;
                     """.trimIndent()
                     src =
                         "https://github.com/alexzhirkevich/compose-cupertino/assets/63979218/982485e8-c581-4c0e-8302-0cb257acd892"
