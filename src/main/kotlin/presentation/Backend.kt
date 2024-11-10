@@ -1,10 +1,7 @@
 package presentation
 
 import com.kslides.Presentation
-import kotlinx.html.a
-import kotlinx.html.div
-import kotlinx.html.img
-import kotlinx.html.style
+import kotlinx.html.*
 
 fun Presentation.Backend() {
 
@@ -70,11 +67,13 @@ fun Presentation.Backend() {
         // quarkus Kotlin
         // https://quarkus.io/guides/kotlin
         // https://github.com/u-ways/kotlin-quarkus-realworld-example-app
-        markdownSlide {
+        dslSlide {
             content {
-                """
-                    
-                """.trimIndent()
+                iframe {
+                    width = "90%"
+                    height = "810px"
+                    src = "https://quarkus.io/guides/kotlin"
+                }
             }
         }
     }
@@ -139,24 +138,48 @@ fun Presentation.Backend() {
     verticalSlides {
 
         // Hexagon https://github.com/hexagontk/hexagon
-        markdownSlide {
+        dslSlide {
             content {
-                """
-                    
-                """.trimIndent()
+                iframe {
+                    width = "90%"
+                    height = "810px"
+                    src = "https://hexagontk.com/stable/"
+                }
             }
         }
 
         // Kotless https://github.com/JetBrains/kotless
-        markdownSlide {
+        dslSlide {
             content {
-                """
-                    
-                """.trimIndent()
+                div("r-vstack") {
+                    div {
+                        style = """
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        """.trimIndent()
+
+                        img(src = "https://s3-eu-west-1.amazonaws.com/public.s3.ktls.aws.intellij.net/resources/favicon.apng")
+                        h3 {
+                            +"Kotless"
+                        }
+                    }
+                    img(src = "images/kotless-start.png")
+                }
             }
         }
     }
 
 
     // Kotlin Script
+
+    verticalSlides {
+        //https://ajalt.github.io/clikt/
+
+        dslSlide {
+            content {
+
+            }
+        }
+    }
 }
