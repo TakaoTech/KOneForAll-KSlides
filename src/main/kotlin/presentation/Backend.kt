@@ -1,6 +1,7 @@
 package presentation
 
 import com.kslides.Presentation
+import com.kslides.codeSnippet
 import kotlinx.html.*
 
 fun Presentation.Backend() {
@@ -59,7 +60,12 @@ fun Presentation.Backend() {
                 ) {
                     img(
                         src = "images/quarkus-logo.png"
-                    )
+                    ){
+                        style = """
+                        background-color: rgba(255, 255, 255, 0.5);
+                        padding: 20px;
+                        """.trimIndent()
+                    }
                 }
             }
         }
@@ -84,13 +90,12 @@ fun Presentation.Backend() {
         dslSlide {
             content {
                 img(
-                    classes = "r-stretch",
                     src = "images/ktor-kmer.png"
                 ) {
                     style = """
-                        width = "615px"
-                        height = "720px"
-                        """.trimIndent()
+                    width: 581px;
+                    height: 816px
+                    """.trimIndent()
                 }
             }
         }
@@ -105,7 +110,7 @@ fun Presentation.Backend() {
                 }
 
                 notes {
-                    + """
+                    +"""
                     Ktor è un framework completamente in Kotlin per creazione di backend,
                     ma Ktor è anche un client HTTP.
                     https://start.ktor.io/settings
@@ -123,7 +128,7 @@ fun Presentation.Backend() {
                 img(src = "images/ktor-pipeline.png")
 
                 notes {
-                    + """
+                    +"""
                      Note negative:
                     Creazione di plugin custom
                     https://ktor.io/docs/server-custom-plugins.html
@@ -164,7 +169,9 @@ fun Presentation.Backend() {
                             +"Kotless"
                         }
                     }
-                    img(src = "images/kotless-start.png")
+                    a(href = "https://github.com/JetBrains/kotless") {
+                        img(src = "images/kotless-start.png")
+                    }
                 }
             }
         }
@@ -174,12 +181,54 @@ fun Presentation.Backend() {
     // Kotlin Script
 
     verticalSlides {
-        //https://ajalt.github.io/clikt/
+        dslSlide {
+            content {
+                img(src = "images/kotlin-script.png")
+            }
+        }
 
+        //https://ajalt.github.io/clikt/
+        dslSlide {
+            content {
+                div("r-vstack") {
+                    img(src = "https://ajalt.github.io/clikt/img/wordmark.svg")
+                    img(src = "https://ajalt.github.io/clikt/img/animation.png")
+                }
+            }
+        }
+
+        dslSlide {
+            content {
+                codeSnippet {
+                    +"""
+                    class Hello : CliktCommand() {
+                        val count: Int by option().int().default(1).help("Number of greetings")
+                        val name: String by option().prompt("Your name").help("The person to greet")
+
+                        override fun run() {
+                            repeat(count) {
+                                echo("Hello ${"\$name"}!")
+                            }
+                        }
+                    }
+
+                    fun main(args: Array<String>) = Hello().main(args)
+                    """.trimIndent()
+                }
+            }
+        }
+
+        //https://github.com/varabyte/kotter
         dslSlide {
             content {
 
             }
         }
+
+        //https://github.com/kscripting/kscript
+
+        //https://github.com/JakeWharton/mosaic
+        //https://github.com/ajalt/mordant
+
     }
 }

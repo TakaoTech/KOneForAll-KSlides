@@ -1,6 +1,8 @@
 package presentation
 
 import com.kslides.Presentation
+import kotlinx.html.img
+import kotlinx.html.style
 
 fun Presentation.Svarioni() {
     //https://github.com/skrapeit/skrape.it
@@ -26,9 +28,22 @@ fun Presentation.Svarioni() {
     //https://github.com/shalaga44/missing-annotations-therapist
     //https://github.com/JavierSegoviaCordoba/kopy
 
+    verticalSlides {
+        dslSlide {
+            content {
+                img(src = "images/kotlin-analysis.png"){
+                    style = """
+                    border-radius: 8px;
+                    """.trimIndent()
+                    width = "90%"
+                    height = "810px"
+                }
+            }
+        }
+    }
+
     //https://github.com/saveourtool/diktat
     //https://pinterest.github.io/ktlint/latest/
-
     //https://github.com/LemonAppDev/konsist
     //https://github.com/detekt/detekt
 
@@ -46,4 +61,7 @@ fun Presentation.Svarioni() {
     //https://github.com/korlibs/korge
 
     //TODO Kotlin script
+
+    //https://github.com/code42/pipelinekt
+    //https://github.com/typesafegithub/github-workflows-kt
 }

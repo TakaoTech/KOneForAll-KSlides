@@ -904,7 +904,8 @@ width: 50%;">
         
         <section>
           <section data-background-color="#27282c">
-            <a href="https://quarkus.io/"><img src="images/quarkus-logo.png"></a>
+            <a href="https://quarkus.io/"><img src="images/quarkus-logo.png" style="background-color: rgba(255, 255, 255, 0.5);
+padding: 20px;"></a>
           </section>
           
           <section data-background-color="#27282c">
@@ -915,8 +916,8 @@ width: 50%;">
         
         <section>
           <section data-background-color="#27282c">
-            <img class="r-stretch" src="images/ktor-kmer.png" style="width = &quot;615px&quot;
-height = &quot;720px&quot;">
+            <img src="images/ktor-kmer.png" style="width: 581px;
+height: 816px">
           </section>
           
           <section data-background-color="#27282c">
@@ -954,14 +955,47 @@ justify-content: center;">
                 <img src="https://s3-eu-west-1.amazonaws.com/public.s3.ktls.aws.intellij.net/resources/favicon.apng">
                 <h3>Kotless</h3>
               </div>
-              <img src="images/kotless-start.png">
+              <a href="https://github.com/JetBrains/kotless"><img src="images/kotless-start.png"></a>
             </div>
           </section>
           
         </section>
         
         <section>
+          <section data-background-color="#27282c">
+            <img src="images/kotlin-script.png">
+          </section>
+          
+          <section data-background-color="#27282c">
+            <div class="r-vstack">
+              <img src="https://ajalt.github.io/clikt/img/wordmark.svg"><img src="https://ajalt.github.io/clikt/img/animation.png">
+            </div>
+          </section>
+          
+          <section data-background-color="#27282c">
+            <pre>              <code class="kotlin" data-line-numbers="" data-noescape="" data-trim="">class Hello : CliktCommand() {
+    val count: Int by option().int().default(1).help("Number of greetings")
+    val name: String by option().prompt("Your name").help("The person to greet")
+
+    override fun run() {
+        repeat(count) {
+            echo("Hello $name!")
+        }
+    }
+}
+
+fun main(args: Array&lt;String&gt;) = Hello().main(args)</code>
+            </pre>
+          </section>
+          
           <section data-background-color="#27282c"></section>
+          
+        </section>
+        
+        <section>
+          <section data-background-color="#27282c">
+            <img height="810px" src="images/kotlin-analysis.png" style="border-radius: 8px;" width="90%">
+          </section>
           
         </section>
         
