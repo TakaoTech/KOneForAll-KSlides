@@ -371,32 +371,39 @@ fun Presentation.WhatIsIt() {
                     src = "https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
                 }
 
-                div {
-                    style = """
-                        position: absolute;
-                        bottom: 0px;
-                        right: 100px;
-                        width: 100px;
-                        height: 100px;
-                    """.trimIndent()
+                div("r-vstack") {
+//                    style = """
+//                        position: absolute;
+//                        bottom: 0px;
+//                        right: 100px;
+//                        width: 100px;
+//                        height: 100px;
+//                        margin-right: 250px;
+//                    """.trimIndent()
+
+                    h3 {
+                        s { +"cross-platform" }
+                    }
+
+                    h3 {
+                        + "multi-platform"
+                    }
+
+                    h3 {
+                        +"multi-purpose"
+                    }
 
                     unsafe {
+                        // <lottie-player src="mascot.json"  speed="1" style="width: 300px; height: 300px;" loop="" autoplay=""></lottie-player>
                         raw(
                             """
-                            <lottie-player src="mascot.json"  speed="1" style="width: 300px; height: 300px;" loop="" autoplay=""></lottie-player>
+                            <lottie-player src="mascot.json"  speed="1" style="width: 1000px; height: 800px;" loop="" autoplay=""></lottie-player>
                             """.trimIndent()
                         )
                     }
                 }
 
-                h3 {
-                    s { +"cross-platform" }
-                    +" multi-platform"
-                }
 
-                h3 {
-                    +"multi-purpose"
-                }
 
                 notes {
                     +"""
