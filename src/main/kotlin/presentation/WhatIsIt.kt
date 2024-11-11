@@ -259,103 +259,103 @@ fun Presentation.WhatIsIt() {
     }*/
 
     // Cos'è Kotlin
-    verticalSlides {
-        markdownSlide {
-            // Stack tecnologico attuale basato su Kotlin
-            // Framework Backend
-            // Mobile
-            // Desktop
-            content {
-                """
-                ![KotlinLogo](images/kotlin_logo.png)
-            
-                """.trimIndent()
-            }
-        }
+//    verticalSlides {
+//        markdownSlide {
+//            // Stack tecnologico attuale basato su Kotlin
+//            // Framework Backend
+//            // Mobile
+//            // Desktop
+//            content {
+//                """
+//                ![KotlinLogo](images/kotlin_logo.png)
+//
+//                """.trimIndent()
+//            }
+//        }
 
-        markdownSlide {
-            // Collegamento di Kotlin a Swift con una classe Person
+//        markdownSlide {
+//            // Collegamento di Kotlin a Swift con una classe Person
+//
+//            // https://github.com/kotlin-hands-on/kotlin-swift-interopedia?tab=readme-ov-file
+//            content {
+//                """
+//                ```kotlin
+//                // Definizione della classe Person in Kotlin
+//                data class Person(
+//                    val name: String,
+//                    val surname: String
+//                )
+//
+//                // Funzione Kotlin per convertire una persona in un formato Swift compatibile
+//                object PersonMock {
+//                    fun getPerson(): Person {
+//                        return Person(name = "John", surname = "Doe")
+//                    }
+//                }
+//                ```
+//                Notes:
+//                In questo esempio, Kotlin Multiplatform Mobile (KMM) permette di condividere la logica tra Kotlin e Swift. La classe `Person` viene definita in Kotlin e utilizzata in Swift. Il framework KMM genera automaticamente i binding necessari affinché Swift possa interagire con il codice Kotlin.
+//                """.trimIndent()
+//            }
+//        }
 
-            // https://github.com/kotlin-hands-on/kotlin-swift-interopedia?tab=readme-ov-file
-            content {
-                """
-                ```kotlin
-                // Definizione della classe Person in Kotlin
-                data class Person(
-                    val name: String,
-                    val surname: String
-                )
-        
-                // Funzione Kotlin per convertire una persona in un formato Swift compatibile
-                object PersonMock {
-                    fun getPerson(): Person {
-                        return Person(name = "John", surname = "Doe")
-                    }
-                }
-                ```
-                Notes:
-                In questo esempio, Kotlin Multiplatform Mobile (KMM) permette di condividere la logica tra Kotlin e Swift. La classe `Person` viene definita in Kotlin e utilizzata in Swift. Il framework KMM genera automaticamente i binding necessari affinché Swift possa interagire con il codice Kotlin.
-                """.trimIndent()
-            }
-        }
+//        markdownSlide {
+//            content {
+//                """
+//                    ```swift
+//        // Uso della classe Person in Swift tramite Kotlin Multiplatform Mobile (KMM)
+//
+//        import shared
+//
+//        func displayPerson() {
+//            let person = PersonMock.shared.getPerson()
+//            print("Person's name: \(person.name), surname: \(person.surname)")
+//        }
+//        ```
+//                """.trimIndent()
+//            }
+//        }
 
-        markdownSlide {
-            content {
-                """
-                    ```swift
-        // Uso della classe Person in Swift tramite Kotlin Multiplatform Mobile (KMM)
-
-        import shared
-
-        func displayPerson() {
-            let person = PersonMock.shared.getPerson()
-            print("Person's name: \(person.name), surname: \(person.surname)")
-        }
-        ```
-                """.trimIndent()
-            }
-        }
-
-        markdownSlide {
-            // Collegamento di Kotlin a TypeScript con un metodo di Kotlin (PersonMock)
-            content {
-                """
-        ```kotlin
-        // Kotlin: Definizione di un oggetto con un metodo che ritorna un'istanza di Person
-
-        @JsExport
-        object PersonMock {
-            fun getPerson(): Person {
-                return Person(name = "John", surname = "Doe")
-            }
-        }
-
-        // Definizione della classe Person
-        data class Person(
-            val name: String,
-            val surname: String
-        )
-        ```
-
-        ```typescript
-        // TypeScript: Chiamata del metodo Kotlin dalla parte TypeScript tramite Kotlin/JS
-
-        import { PersonMock } from 'shared' // Importa il modulo Kotlin compilato in JS
-
-        function displayPerson() {
-            const person = PersonMock.getPerson() // Chiamata al metodo Kotlin
-            console.log(`Person's name: ${"\${person.name}"}, surname: ${"\${person.surname}"}`);
-        }
-
-        displayPerson();
-        ```
-
-        Notes:
-        In questo esempio, l'oggetto `PersonMock` in Kotlin contiene il metodo `getPerson()` che restituisce un'istanza della classe `Person`. Grazie a **Kotlin/JS**, il codice Kotlin viene compilato in JavaScript e può essere utilizzato in TypeScript come un modulo importato.
-        """.trimIndent()
-            }
-        }
-    }
+//        markdownSlide {
+//            // Collegamento di Kotlin a TypeScript con un metodo di Kotlin (PersonMock)
+//            content {
+//                """
+//        ```kotlin
+//        // Kotlin: Definizione di un oggetto con un metodo che ritorna un'istanza di Person
+//
+//        @JsExport
+//        object PersonMock {
+//            fun getPerson(): Person {
+//                return Person(name = "John", surname = "Doe")
+//            }
+//        }
+//
+//        // Definizione della classe Person
+//        data class Person(
+//            val name: String,
+//            val surname: String
+//        )
+//        ```
+//
+//        ```typescript
+//        // TypeScript: Chiamata del metodo Kotlin dalla parte TypeScript tramite Kotlin/JS
+//
+//        import { PersonMock } from 'shared' // Importa il modulo Kotlin compilato in JS
+//
+//        function displayPerson() {
+//            const person = PersonMock.getPerson() // Chiamata al metodo Kotlin
+//            console.log(`Person's name: ${"\${person.name}"}, surname: ${"\${person.surname}"}`);
+//        }
+//
+//        displayPerson();
+//        ```
+//
+//        Notes:
+//        In questo esempio, l'oggetto `PersonMock` in Kotlin contiene il metodo `getPerson()` che restituisce un'istanza della classe `Person`. Grazie a **Kotlin/JS**, il codice Kotlin viene compilato in JavaScript e può essere utilizzato in TypeScript come un modulo importato.
+//        """.trimIndent()
+//            }
+//        }
+//    }
 
     //TODO Dove imparare
 
