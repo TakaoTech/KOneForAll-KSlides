@@ -43,8 +43,13 @@ fun main() {
       }
       """
 
+        kslidesConfig {
+            this.krokiUrl
+        }
+
         presentationConfig {
-            history = true
+
+        history = true
             transition = Transition.SLIDE
             transitionSpeed = Speed.SLOW
             topRightHref = "/"  // Assign to "" to turn this off

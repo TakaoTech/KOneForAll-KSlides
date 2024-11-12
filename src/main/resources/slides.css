@@ -8,6 +8,7 @@
 .reveal h5,
 .reveal h6 {
     text-transform: none;
+    font-family: "JetBrains Mono", serif;
 }
 
 a.top-left {

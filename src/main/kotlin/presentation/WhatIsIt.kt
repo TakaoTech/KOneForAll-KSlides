@@ -367,6 +367,28 @@ fun Presentation.WhatIsIt() {
 
         dslSlide {
             content {
+                h2 {
+                    +"Dove inizio a studiare?"
+                }
+            }
+        }
+
+        dslSlide {
+            content {
+                div("r-vstack") {
+                    a(href = "") {
+                        img(src = "images/kotlin-home.png")
+                    }
+
+                    a(href = "https://kotlinlang.org/docs/getting-started.html") {
+                        +"Get Started"
+                    }
+                }
+            }
+        }
+
+        dslSlide {
+            content {
                 script {
                     src = "https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
                 }
