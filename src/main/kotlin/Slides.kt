@@ -36,20 +36,15 @@ fun main() {
         }
 
         // CSS values assigned here are applied to all the presentations
-        css +=
-            """
-      #githubCorner path { 
-        fill: #258BD2; 
-      }
-      """
-
-        kslidesConfig {
-            this.krokiUrl
+        css += """
+        #githubCorner path { 
+          fill: #258BD2; 
         }
+        """
 
         presentationConfig {
 
-        history = true
+            history = true
             transition = Transition.SLIDE
             transitionSpeed = Speed.SLOW
             topRightHref = "/"  // Assign to "" to turn this off
