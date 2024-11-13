@@ -92,21 +92,143 @@ fun Presentation.Svarioni() {
         //https://github.com/cmdjulian/kirc
         dslSlide {
             content {
-                a(href = "https://github.com/cmdjulian/kirc") {
+                div(classes = "r-vstack") {
                     img(src = "https://github.com/cmdjulian/kirc/raw/main/logo.png")
+
+                    a(href = "https://github.com/cmdjulian/kirc") {
+                        +"kirc"
+                    }
                 }
+
 
                 notes {
                     +"""
                     Container Registry Client in Kotlin
+                    
+                    https://github.com/VirtuslabRnD/pulumi-kotlin
                     """.trimIndent()
                 }
             }
         }
         //https://github.com/VirtuslabRnD/pulumi-kotlin
+
+        //https://github.com/code42/pipelinekt
         dslSlide {
             content {
+                div(classes = "r-vstack") {
+                    img(src = "images/kotlin-jenkins.png")
 
+                    a(href = "https://github.com/code42/pipelinekt") {
+                        +"pipelinekt"
+                    }
+                }
+            }
+        }
+
+        dslSlide {
+            content {
+                codeSnippet {
+                    +"""
+                        val gradleArgs = "-DmyArg=myArgValue"
+    
+                        val gradle = GradleBuildDsl()
+                        /**
+                         * Pipeline
+                         */
+                        fun PipelineDsl.gradleBuildPipeline() =
+                                gradle.run {
+                                    pipeline {
+                                        stages {
+                                            stage("Build") {
+                                                steps {
+                                                    gradleCommand("build ${"\$gradleArgs"}")
+                                                }
+                                            }
+                                            stage("Validate") {
+                                                parallel {
+                                                    listOf("api", "ext", "shared", "mod1").forEach { subProject ->
+                                                        stage("${"\$subProject"} Test") {
+                                                            agent(defaultAgent)
+                                                            steps {
+                                                                gradleCommand(":${"\$subProject"}:systemTest ${"\$gradleArgs"}")
+                                                            }
+                                                            post {
+                                                                always {
+                                                                    archiveArtifacts("${"\$subProject"}/build/test-reports/", true)
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            stage("Publish") {
+                                                agent(defaultAgent)
+                                                steps {
+                                                    gradleCommand("publish ${"\$gradleArgs"}")
+                                                }
+                                            }
+                                        }
+                                    }
+                                }    
+                    """.trimIndent()
+                }
+
+                notes {
+                    +"Esempio di lancio build gradle con lancio parallelo"
+                }
+            }
+        }
+
+        dslSlide {
+            content {
+                codeSnippet {
+                    +"""
+                        val uid = "uid".groovyVariable()
+                        val dockerDsl = DockerDsl(
+                                defaultDockerBuildArgs = "-u "${"\$uid"}",
+                                beforeContainer = { def(uid.name) { sh("id -u", true) } })
+
+                        val sideCars = listOf(SideCar.Image(
+                                containerVariable = "postgres".groovyVariable(),
+                                containerLinkName = "db",
+                                image = "postgres:11".strDouble(),
+                                runArgs = "--env DB=app --expose 5432".strDouble()),
+                                SideCar.Image(
+                                        containerVariable = "rabbitmq".groovyVariable(),
+                                        containerLinkName = "rabbit",
+                                        image = "rabbitmq:11".strDouble(),
+                                        runArgs = "--expose 5672".strDouble()))
+
+                        fun PipelineDsl.dockerPipeline() = pipeline {
+                            stages {
+                                stage("build in container") {
+                                    steps {
+                                        dockerDsl.run {
+                                            insideContainer(
+                                                    dockerAgent = { dockerFile(
+                                                            filename = "build.Dockerfile",
+                                                            additionalBuildArgs = "--arg1 y",
+                                                            registryUrl = "my.custom.registry",
+                                                            registryCredentialsId = "registry-creds-id")
+                                                    },
+                                                    sideCars = sideCars
+                                            ) {
+                                                echo("Inside a container!")
+                                                sh("psql -h db -p 5432 app")
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        """.trimIndent()
+
+
+                }
+
+                notes {
+                    +"Build in docker"
+                }
             }
         }
     }
@@ -289,9 +411,121 @@ fun Presentation.Svarioni() {
     }
 
     //https://github.com/dotlin-org/dotlin
+    dslSlide {
+        content {
+            img(src = "https://github.com/dotlin-org/dotlin/raw/main/docs/assets/dotlin.png")
 
-    //https://github.com/square/kotlinpoet
-    //https://github.com/outfoxx/swiftpoet
+            a("https://github.com/dotlin-org/dotlin") {
+                +"Kotlin/Dart"
+            }
+
+            notes {
+                +"""
+                Compilatore Kotlin/Dart
+                """.trimIndent()
+            }
+        }
+    }
+
+    verticalSlides {
+        dslSlide {
+            content {
+                h1 {
+                    +"Source Code generation"
+                }
+            }
+        }
+
+        dslSlide {
+            content {
+                img(src = "images/java-poet.png")
+            }
+        }
+
+        //https://github.com/square/kotlinpoet
+        dslSlide {
+            content {
+                iframe {
+                    src = "https://square.github.io/kotlinpoet/"
+                    width = "1200"
+                    height = "720"
+                }
+
+                notes {
+                    +"""
+                    Fare riferimento al KSP.
+                    Generatore di Sorgente Kotlin e Java   
+                    """.trimIndent()
+                }
+            }
+        }
+
+        //https://github.com/outfoxx/swiftpoet
+        dslSlide {
+            content {
+                div("r-vstack") {
+                    a(href = "https://github.com/outfoxx/swiftpoet") {
+                        +"swiftpoet"
+                    }
+
+                    codeSnippet {
+                        +"""
+                        val observableTypeName = DeclaredTypeName.typeName("RxSwift.Observable")
+    
+                        val testClass = TypeSpec.classBuilder("Greeter")
+                           .addProperty("name", STRING, Modifier.PRIVATE)
+                           .addFunction(
+                              FunctionSpec.constructorBuilder()
+                                 .addParameter("name", STRING)
+                                 .addCode("self.name = name\n")
+                                 .build()
+                           )
+                           .addFunction(
+                              FunctionSpec.builder("greet")
+                                 .returns(observableTypeName.parameterizedBy(STRING))
+                                 .addCode("return %T.from(\"Hello \\(name)\")\n", observableTypeName)
+                                 .build()
+                           )
+                           .build()
+                        
+                        val file = FileSpec.builder("Greeter")
+                           .addType(testClass)
+                           .build()
+                        
+                        val out = StringWriter()
+                        file.writeTo(out)    
+                        """.trimIndent()
+                    }
+                }
+
+
+            }
+        }
+
+        dslSlide {
+            content {
+                codeSnippet {
+                    +"""
+                    import RxSwift
+
+                    class Greeter {
+
+                      private let name: String
+
+                      init(name: String) {
+                        self.name = name
+                      }
+
+                      func greet() -> Observable<String> {
+                        return Observable.from("Hello \(name)")
+                      }
+
+                    }
+                    """.trimIndent()
+                }
+            }
+        }
+    }
     //https://github.com/smithy-lang/smithy-kotlin
 
     //https://github.com/shalaga44/missing-annotations-therapist

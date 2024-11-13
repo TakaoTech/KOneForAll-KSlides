@@ -357,8 +357,6 @@ fun Presentation.WhatIsIt() {
 //        }
 //    }
 
-    //TODO Dove imparare
-
     // What is Kotlin
 
     verticalSlides {
