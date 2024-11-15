@@ -525,11 +525,59 @@ fun Presentation.Svarioni() {
                 }
             }
         }
-    }
-    //https://github.com/smithy-lang/smithy-kotlin
 
-    //https://github.com/shalaga44/missing-annotations-therapist
-    //https://github.com/JavierSegoviaCordoba/kopy
+        //https://github.com/smithy-lang/smithy-kotlin
+        dslSlide {
+            content {
+                div("r-vstack") {
+                    iframe {
+                        width = "90%"
+                        height = "810px"
+                        src = "https://smithy.io/2.0/index.html"
+                    }
+                }
+            }
+        }
+
+        //https://github.com/shalaga44/missing-annotations-therapist
+//        dslSlide {
+//            content {
+//                div("r-vstack") {
+//                    img(src = "img/missing-annotation-kotlin.png")
+//                    a(href = "https://github.com/shalaga44/missing-annotations-therapist"){
+//                        + "missing-annotations-therapist"
+//                    }
+//                }
+//
+//                notes {
+//                    + """
+//                    Hai dimenticato un annotazione in certi tipi di classi?
+//                    """.trimIndent()
+//                }
+//            }
+//        }
+
+        //https://github.com/JavierSegoviaCordoba/kopy
+        dslSlide {
+            content {
+                div {
+                    img(src = "https://github.com/JavierSegoviaCordoba/kopy/raw/main/.docs/docs/assets/images/example.gif")
+                    a(href = "https://github.com/JavierSegoviaCordoba/kopy") {
+                        +"Kopy"
+                    }
+                }
+
+                notes {
+                    +"""
+                    https://kotlinlang.org/docs/data-classes.html
+                    Plugin di supporto per il copy innestato o strutturato
+                    
+                    Attenzione: leggera attentamente la doc sul funzionamento
+                    """.trimIndent()
+                }
+            }
+        }
+    }
 
     verticalSlides {
         dslSlide {
@@ -543,25 +591,141 @@ fun Presentation.Svarioni() {
                 }
             }
         }
+
+
+        //https://github.com/saveourtool/diktat
+        dslSlide {
+            content {
+                div {
+                    iframe {
+                        src = "https://diktat.saveourtool.com/"
+                        width = "90%"
+                        height = "810px"
+                    }
+
+                    notes {
+                        +"diktat"
+                    }
+                }
+            }
+        }
+
+        //https://github.com/detekt/detekt
+        dslSlide {
+            content {
+                div {
+                    iframe {
+                        src = "https://detekt.dev/"
+                        width = "90%"
+                        height = "810px"
+                    }
+                }
+
+                notes {
+                    +"detekt"
+                }
+            }
+        }
+
+        //https://pinterest.github.io/ktlint/latest/
+        dslSlide {
+            content {
+                div {
+                    iframe {
+                        src = "https://pinterest.github.io/ktlint/latest/"
+                        width = "90%"
+                        height = "810px"
+                    }
+                }
+
+                notes {
+                    +"ktlint"
+                }
+            }
+        }
+
+        //https://github.com/LemonAppDev/konsist
+        dslSlide {
+            content {
+                img(src = "https://github.com/LemonAppDev/konsist/raw/main/misc/konsist-logo/logo.png")
+            }
+        }
     }
 
-    //https://github.com/saveourtool/diktat
-    //https://pinterest.github.io/ktlint/latest/
-    //https://github.com/LemonAppDev/konsist
-    //https://github.com/detekt/detekt
+    verticalSlides {
 
-    //https://github.com/smyrgeorge/sqlx4k
+        //https://github.com/smyrgeorge/sqlx4k
+        dslSlide {
+            content {
+                div("r-vstack") {
+                    img(src = "images/sqlx4k-kotlin.png")
+                    a(href = "https://github.com/smyrgeorge/sqlx4k") {
+                        +"sqlx4k"
+                    }
+                }
+
+                notes {
+                    +"""
+                    Driver per  PostgreSQL, MySQL, and SQLite scritto in Kotlin Native.
+                    Anche se penso che un pochino ci abbia mentito.
+                    """.trimIndent()
+                }
+            }
+        }
+
+        //https://github.com/arrow-kt/arrow
+        dslSlide {
+            content {
+                div("r-vstack") {
+                    img(src = "images/arrow-kotlin.png")
+
+                    a(href = "https://github.com/arrow-kt/arrow") {
+                        +"arrow"
+                    }
+                }
+            }
+        }
+
+        //https://github.com/touchlab/SKIE
+        dslSlide {
+            content {
+                iframe {
+                    style = """
+                    background-color: rgba(255, 255, 255);
+                    """.trimIndent()
+                    src = "https://skie.touchlab.co/intro#getting-started"
+                    width = "90%"
+                    height = "810px"
+
+                }
+            }
+        }
+
+        //https://github.com/JetBrains/skiko
+        dslSlide {
+            content {
+                div("r-vstack") {
+                    img(src = "images/skiko-kotlin.png")
+                    a(href = "https://github.com/JetBrains/skiko") {
+                        +"skiko"
+                    }
+                }
+            }
+        }
+
+        //https://github.com/korlibs/ktcc
+    }
+
 
     //https://github.com/cdsap/ProjectGenerator
 
 
-    //https://github.com/arrow-kt/arrow
-    //https://github.com/touchlab/SKIE
-    //https://github.com/JetBrains/skiko
-    //https://github.com/korlibs/ktcc
+
 
     //https://github.com/gabryon99/postcat-kodee
     //https://github.com/korlibs/korge
+    //https://github.com/kotlin-graphics/vkk
+    //https://github.com/kool-engine/kool
 
     //TODO Kotlin script
 
