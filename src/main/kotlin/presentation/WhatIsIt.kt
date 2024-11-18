@@ -54,14 +54,6 @@ fun Presentation.WhatIsIt() {
                 }
 
                 div("r-vstack") {
-//                    style = """
-//                        position: absolute;
-//                        bottom: 0px;
-//                        right: 100px;
-//                        width: 100px;
-//                        height: 100px;
-//                        margin-right: 250px;
-//                    """.trimIndent()
 
                     h3 {
                         s { +"cross-platform" }
@@ -76,7 +68,6 @@ fun Presentation.WhatIsIt() {
                     }
 
                     unsafe {
-                        // <lottie-player src="mascot.json"  speed="1" style="width: 300px; height: 300px;" loop="" autoplay=""></lottie-player>
                         raw(
                             """
                             <lottie-player src="mascot.json"  speed="1" style="width: 1000px; height: 800px;" loop="" autoplay=""></lottie-player>
@@ -91,7 +82,8 @@ fun Presentation.WhatIsIt() {
                     +"""
                     Kotlin è un linguaggio multi-paradigma multi-piattaforma inizialmente basato su JVM.
                     
-                    17 maggio 2017 Google I/O, annuncio del supporto Kotlin allo sviluppo Android
+                    Chiedere a pubblico "Differenza tra cross e multi".
+                    Altrimenti spiegare la differenza, secondo me.
                     """.trimIndent()
                 }
             }
@@ -247,7 +239,13 @@ fun Presentation.WhatIsIt() {
                         )
                     }
 
-
+                    notes {
+                        + """
+                        - Welfare Norvegia.
+                        
+                        DGS (Domain Graph Service) Netflix: Backend custom GraphQL
+                        """.trimIndent()
+                    }
                 }
             }
         }

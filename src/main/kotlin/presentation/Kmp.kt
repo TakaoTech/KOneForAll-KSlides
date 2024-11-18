@@ -8,14 +8,52 @@ fun Presentation.Kmp() {
     verticalSlides {
 
         // Domanda per pubblico, come lo definisci il nativo?
-        // Flutter è nativo
-        // Mettere codice di differenza Kotlin-Java
-        // Mettere differenza pacchetto con flutter
         //https://youtu.be/E8CtE7qTb-Q?si=d0QkMOSLqfqERQ6r&t=5182
         dslSlide {
             content {
                 h2 {
                     +"Per voi lo sviluppo Flutter, è nativo?"
+                }
+            }
+        }
+
+        dslSlide {
+            content {
+                video {
+                    attributes["onloadstart"] = "this.playbackRate = 3;"
+                    autoPlay = true
+                    controls = true
+                    style = """
+                    width: 75%;
+                    height: auto;
+                    object-fit: contain;
+                    """.trimIndent()
+
+                    source {
+                        src = "videos/KotlinItalia.mp4"
+                        type = "video/mp4"
+                    }
+                }
+
+                notes {
+                    + "Se non rispondono, spiegare velocemente potenziale differenza"
+                }
+            }
+        }
+
+        dslSlide {
+            content {
+                div("r-vstack") {
+                    img(src = "images/kmp-schema.webp"){
+                        style = """
+                        background-color: rgba(255, 255, 255);
+                        padding: 20px;
+                        """.trimIndent()
+                    }
+
+                    a(href = "https://kmp.jetbrains.com/"){
+                        + "Kmp Wizard"
+                    }
                 }
             }
         }
@@ -71,19 +109,9 @@ fun Presentation.Kmp() {
                 notes {
                     +"""
                     reakt-native-toolkit, un tool per creare automaticamente 
-                    il bridge del codice Kotlin con React Native
+                    il bridge del codice Kotlin con React Native.
                     """.trimIndent()
                 }
-            }
-        }
-
-        //Progetto ispirativo, obbiettivo di tirare fuori la risposta di aggiungere un backend
-        // https://github.com/Abdelrahman-SW/Coffee-Store-App
-        markdownSlide {
-            content {
-                """
-                    
-                """.trimIndent()
             }
         }
 
@@ -115,6 +143,10 @@ fun Presentation.Kmp() {
 
                 a(href = "https://github.com/Kotlin/Storytale") {
                     +"Storytale"
+                }
+
+                notes {
+                    //TODO
                 }
             }
         }
@@ -160,6 +192,10 @@ fun Presentation.Kmp() {
         }
         // https://github.com/ozontech/kelp
         dslSlide {
+
+            //TODO Aggiungere descrizione: Cos'è un design system.
+            //https://m3.material.io/
+
             content {
 
                 div {
@@ -167,9 +203,7 @@ fun Presentation.Kmp() {
                     gap: 10px;
                     """.trimIndent()
 
-                    img(src = "images/kelp.svg") {
-
-                    }
+                    img(src = "images/kelp.svg")
                 }
 
                 a(href = "https://github.com/ozontech/kelp") {

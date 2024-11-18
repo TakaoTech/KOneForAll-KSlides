@@ -123,6 +123,9 @@ fun Presentation.Backend() {
             }
         }
 
+        //TODO Ktor Google Deploy
+        //https://github.com/GoogleCloudPlatform/kotlin-samples#readme
+
         dslSlide {
             content {
                 img(src = "images/ktor-pipeline.png")
@@ -134,6 +137,8 @@ fun Presentation.Backend() {
                     https://ktor.io/docs/server-custom-plugins.html
                     https://ximedes.com/blog/2020-09-17/role-based-authorization-in-ktor
                     """.trimIndent()
+
+                    //TODO Aggiungere repo role base
                 }
             }
         }
@@ -152,6 +157,8 @@ fun Presentation.Backend() {
                 }
             }
         }
+
+        //TODO AWS Kotlin
 
         // Kotless https://github.com/JetBrains/kotless
         dslSlide {
@@ -175,6 +182,8 @@ fun Presentation.Backend() {
                 }
             }
         }
+
+
     }
 
 
