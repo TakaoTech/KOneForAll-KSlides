@@ -36,7 +36,7 @@ fun Presentation.Kmp() {
                 }
 
                 notes {
-                    + "Se non rispondono, spiegare velocemente potenziale differenza"
+                    +"Se non rispondono, spiegare velocemente potenziale differenza"
                 }
             }
         }
@@ -44,15 +44,16 @@ fun Presentation.Kmp() {
         dslSlide {
             content {
                 div("r-vstack") {
-                    img(src = "images/kmp-schema.webp"){
+                    img(src = "images/kmp-schema.webp") {
                         style = """
+                        width: 75%;    
                         background-color: rgba(255, 255, 255);
                         padding: 20px;
                         """.trimIndent()
                     }
 
-                    a(href = "https://kmp.jetbrains.com/"){
-                        + "Kmp Wizard"
+                    a(href = "https://kmp.jetbrains.com/") {
+                        +"Kmp Wizard"
                     }
                 }
             }
@@ -82,7 +83,11 @@ fun Presentation.Kmp() {
                 a(
                     href = "https://developer.android.com/jetpack/androidx/releases/paging"
                 ) {
-                    img(src = "images/paging-kmp1.png")
+                    img(src = "images/paging-kmp1.png") {
+                        style = """
+                        width: 125%;
+                        """.trimIndent()
+                    }
                 }
             }
         }
@@ -92,7 +97,11 @@ fun Presentation.Kmp() {
                 a(
                     href = "https://developer.android.com/jetpack/androidx/releases/paging"
                 ) {
-                    img(src = "images/paging-kmp2.png")
+                    img(src = "images/paging-kmp2.png") {
+                        style = """
+                        width: 50%;
+                        """.trimIndent()
+                    }
                 }
             }
         }
@@ -146,7 +155,10 @@ fun Presentation.Kmp() {
                 }
 
                 notes {
-                    //TODO
+                    +"""
+                    Plugin gradle di supporto per generare una galleria di componenti composable.
+                    https://kotlin.github.io/Storytale/
+                    """.trimIndent()
                 }
             }
         }
@@ -188,6 +200,12 @@ fun Presentation.Kmp() {
                 a(href = "https://github.com/popovanton0/Blueprint") {
                     +"Blueprint"
                 }
+
+                notes {
+                    +"""
+                    Tool per mostrare nelle preview le dimensioni nei composable.
+                    """.trimIndent()
+                }
             }
         }
         // https://github.com/ozontech/kelp
@@ -212,7 +230,10 @@ fun Presentation.Kmp() {
 
                 notes {
                     +"""
-                    Kelp è un plugin per Android Studio per supportare lo sviluppo di un design system custom    
+                    Kelp è un plugin per Android Studio per supportare lo sviluppo di un design system custom.
+                    
+                    Un Design System sono un insieme di regole e componenti per lo sviluppo della UI della propria Applicazione.
+                    https://m3.material.io/components
                     """.trimIndent()
                 }
             }
@@ -222,11 +243,11 @@ fun Presentation.Kmp() {
             content {
                 div {
                     style = """
-                    overflow: auto; /* Rende scrollabile il div */
-                    max-height: 710px; /* Imposta un'altezza massima per limitare lo scroll */
-                    margin: 20px; /* Aggiunge un margine attorno al div */
-                    padding: 10px; /* Opzionale: aggiunge uno spazio interno */
-                    border: 1px solid #ccc; /* Opzionale: bordo per visibilità */
+                    overflow: auto;
+                    max-height: 710px;
+                    margin: 20px; 
+                    padding: 10px; 
+                    border: 1px solid #ccc;
                     """.trimIndent()
                     table {
                         thead {
@@ -442,6 +463,46 @@ fun Presentation.Kmp() {
         // Meme 3.1 Dukat
         // https://github.com/Kotlin/dukat
         // https://github.com/karakum-team/karakum
+        dslSlide {
+            content {
+                div {
+                    style = """
+                    display: flex;
+                    gap: 10px;
+                    """.trimIndent()
+                    div("r-vstack") {
+                        style = """
+                        height: auto;
+                        object-fit: contain;
+                        """.trimIndent()
+
+                        h3 { +"Dukat" }
+
+                        a(href = "https://github.com/Kotlin/dukat") {
+                            img(src = "images/dukat.png")
+                        }
+                    }
+                    div {
+                        style = """
+                        height: auto;
+                        object-fit: contain;
+                        """.trimIndent()
+                        div("r-vstack") {
+                            h3 { +"karakum" }
+                            a(href = "https://github.com/karakum-team/karakum") {
+                                img(src = "images/karakum.png")
+                            }
+                        }
+                    }
+                }
+
+                notes {
+                    +"""
+                    
+                    """.trimIndent()
+                }
+            }
+        }
 
         // Desktop
 

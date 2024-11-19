@@ -243,15 +243,50 @@ fun Presentation.WhatIsIt() {
                         + """
                         - Welfare Norvegia.
                         
-                        DGS (Domain Graph Service) Netflix: Backend custom GraphQL
+                        DGS (Domain Graph Service) Netflix: GraphQL per Spring Boot più easy.
                         """.trimIndent()
                     }
+                }
+            }
+        }
+
+        dslSlide {
+            content {
+                div("r-vstack") {
+                    div("r-hstack") {
+                        h3 {
+                            +"kapt | KSP (Kotlin Symbol Processing)"
+                        }
+                    }
+
+                    a(href = "https://github.com/google/ksp") {
+
+                    }
+
+                    img(src = "images/ksp.png") {
+                        style = """
+                        width: 75%;
+                        height: auto;
+                        object-fit: contain;
+                        """.trimIndent()
+                    }
+                }
+
+                notes {
+                    +"""
+                    Kapt: https://kotlinlang.org/docs/kapt.html
+                    Plugin "wrapper" dell'annotator processor di Java, che aggiunge il supporto del plugin a Kotlin
+                    
+                    https://github.com/google/ksp
+                        
+                    https://foso.github.io/Ktorfit/
+                    https://developer.android.com/kotlin/multiplatform/room
+                    https://developer.android.com/guide/navigation/design/type-safety
+                    """.trimIndent()
                 }
             }
         }
     }
 
     //TODO Bytecode decompiler
-
-    //TODO KSP-KAPT-ANNOTATOR PROCESSOR?
 }
