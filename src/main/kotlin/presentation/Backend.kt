@@ -158,7 +158,16 @@ fun Presentation.Backend() {
             }
         }
 
-        //TODO AWS Kotlin
+        dslSlide {
+            content {
+                div("r-vstack") {
+                    img(src = "images/aws-kotlin.png")
+                    a(href = "https://aws.amazon.com/it/sdk-for-kotlin/"){
+                        + "Kotlin AWS SDK"
+                    }
+                }
+            }
+        }
 
         // Kotless https://github.com/JetBrains/kotless
         dslSlide {
@@ -203,6 +212,14 @@ fun Presentation.Backend() {
                     img(src = "https://ajalt.github.io/clikt/img/wordmark.svg")
                     img(src = "https://ajalt.github.io/clikt/img/animation.png")
                 }
+
+                notes {
+                    + """
+                    https://ajalt.github.io/clikt/
+                    https://github.com/varabyte/kotter
+                    https://github.com/kscripting/kscript
+                    """.trimIndent()
+                }
             }
         }
 
@@ -227,17 +244,77 @@ fun Presentation.Backend() {
             }
         }
 
-        //https://github.com/varabyte/kotter
+
         dslSlide {
             content {
-
+                div("r-vstack") {
+                    img(src = "https://github.com/JakeWharton/mosaic/raw/trunk/samples/rrtop/demo.gif")
+                    a(href = "https://github.com/JakeWharton/mosaic"){
+                        + "mosaic"
+                    }
+                }
             }
         }
 
-        //https://github.com/kscripting/kscript
+        dslSlide {
+            content {
+                div("r-hstack") {
+                    style = """
+                    display: flex;
+                    gap: 10px;
+                    """.trimIndent()
+                    img(src = "https://github.com/JakeWharton/mosaic/raw/trunk/samples/counter/demo.gif"){
+                        style = """
+                        width: 50%;
+                        height: auto;
+                        object-fit: contain;
+                        """.trimIndent()
+                    }
 
-        //https://github.com/JakeWharton/mosaic
+                    codeSnippet {
+                        + """
+                        @Composable
+                        fun Counter() {
+                        	var count by remember { mutableIntStateOf(0) }
+
+                        	Text("The count is: ${"\${count}"}")
+
+                        	LaunchedEffect(Unit) {
+                        		for (i in 1..20) {
+                        			delay(250)
+                        			count = i
+                        		}
+                        	}
+                        }
+
+                        fun main() = runMosaicBlocking {
+                        	Counter()
+                        }
+                        """.trimIndent()
+                    }
+
+
+                }
+            }
+        }
         //https://github.com/ajalt/mordant
+        dslSlide {
+            content {
+                div("r-vstack") {
+                    img(src = "https://github.com/ajalt/mordant/raw/master/docs/img/tour.png")
+                    a(href = "https://github.com/ajalt/mordant"){
+                        + "mordant"
+                    }
+                }
+
+                notes {
+                    + """
+                    Libreria KMP per renderizzare testo stilizzato su terminale.
+                    Tabelle, Animazioni
+                    """.trimIndent()
+                }
+            }
+        }
 
     }
 }

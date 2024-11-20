@@ -716,6 +716,47 @@ fun Presentation.Svarioni() {
         //https://github.com/korlibs/ktcc
     }
 
+    verticalSlides {
+        dslSlide {
+            content {
+                iframe {
+                    src = "https://korge.org/"
+                    width = "90%"
+                    height = "810px"
+                }
+            }
+        }
+
+        //https://github.com/korlibs/korge
+        dslSlide {
+            content {
+                div("r-hstack") {
+                    img(src = "https://github.com/utopia-rise/godot-kotlin-jvm/raw/master/.README/logo.png"){
+                        width = "10%"
+                    }
+
+                    iframe {
+                        src = "https://godot-kotl.in/en/stable/"
+                        width = "90%"
+                        height = "810px"
+                    }
+                }
+
+                notes {
+                    + """
+                    https://github.com/korlibs/korge
+                    """.trimIndent()
+                }
+            }
+        }
+
+        //https://github.com/kotlin-graphics/vkk
+        dslSlide {
+            content {
+                img(src = "images/vkk-kotlin.png")
+            }
+        }
+    }
 
     //https://github.com/cdsap/ProjectGenerator
 
@@ -723,13 +764,10 @@ fun Presentation.Svarioni() {
 
 
     //https://github.com/gabryon99/postcat-kodee
-    //https://github.com/korlibs/korge
-    //https://github.com/kotlin-graphics/vkk
     //https://github.com/kool-engine/kool
 
     //TODO Kotlin script
 
-    //https://github.com/code42/pipelinekt
     //https://github.com/typesafegithub/github-workflows-kt
 
 
