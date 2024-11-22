@@ -123,8 +123,28 @@ fun Presentation.Backend() {
             }
         }
 
-        //TODO Ktor Google Deploy
         //https://github.com/GoogleCloudPlatform/kotlin-samples#readme
+        dslSlide {
+            content {
+                div(classes = "r-vstack") {
+                    img(src = "images/kotlin-google.png")
+                    a(href = " https://cloud.google.com/kotlin"){
+                        + "Kotlin Google Cloud"
+                    }
+                    a(href = "https://github.com/GoogleCloudPlatform/kotlin-samples#readme"){
+                        + "Google Cloud Sample"
+                    }
+                }
+                notes {
+                    + """
+                    https://cloud.google.com/kotlin?hl=it
+                    https://github.com/GoogleCloudPlatform/kotlin-samples#readme
+
+                    """.trimIndent()
+                }
+            }
+        }
+
 
         dslSlide {
             content {
@@ -136,9 +156,9 @@ fun Presentation.Backend() {
                     Creazione di plugin custom
                     https://ktor.io/docs/server-custom-plugins.html
                     https://ximedes.com/blog/2020-09-17/role-based-authorization-in-ktor
+                    
+                    https://github.com/ximedes/ktor-authorization
                     """.trimIndent()
-
-                    //TODO Aggiungere repo role base
                 }
             }
         }

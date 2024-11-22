@@ -5,6 +5,11 @@ import kotlinx.html.*
 
 fun Presentation.WhatIsIt() {
     markdownSlide {
+        slideConfig {
+            backgroundVideo = "videos/kofo-resize.mp4"
+            backgroundVideoLoop = true
+        }
+
         content {
             """
             ![KotlinLogo](images/kotlin_logo.png)
