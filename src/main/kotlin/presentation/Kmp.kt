@@ -17,29 +17,29 @@ fun Presentation.Kmp() {
             }
         }
 
-        dslSlide {
-            content {
-                video {
-                    attributes["onloadstart"] = "this.playbackRate = 3;"
-                    autoPlay = true
-                    controls = true
-                    style = """
-                    width: 75%;
-                    height: auto;
-                    object-fit: contain;
-                    """.trimIndent()
-
-                    source {
-                        src = "videos/KotlinItalia.mp4"
-                        type = "video/mp4"
-                    }
-                }
-
-                notes {
-                    +"Se non rispondono, spiegare velocemente potenziale differenza"
-                }
-            }
-        }
+//        dslSlide {
+//            content {
+//                video {
+//                    attributes["onloadstart"] = "this.playbackRate = 3;"
+//                    autoPlay = true
+//                    controls = true
+//                    style = """
+//                    width: 75%;
+//                    height: auto;
+//                    object-fit: contain;
+//                    """.trimIndent()
+//
+//                    source {
+//                        src = "videos/KotlinItalia.mp4"
+//                        type = "video/mp4"
+//                    }
+//                }
+//
+//                notes {
+//                    +"Se non rispondono, spiegare velocemente potenziale differenza"
+//                }
+//            }
+//        }
 
         dslSlide {
             content {
