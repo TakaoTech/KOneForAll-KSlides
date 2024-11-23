@@ -35,8 +35,11 @@ fun Presentation.WhatIsIt() {
             }
         }
 
-        //TODO Isola Java
-        //TODO Isola Kotlin
+        dslSlide {
+            content {
+                img(src = "images/kotlin-island.png")
+            }
+        }
 
         dslSlide {
             content {
@@ -292,6 +295,4 @@ fun Presentation.WhatIsIt() {
             }
         }
     }
-
-    //TODO Bytecode decompiler
 }

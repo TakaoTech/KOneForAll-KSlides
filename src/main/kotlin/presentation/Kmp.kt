@@ -211,7 +211,6 @@ fun Presentation.Kmp() {
         // https://github.com/ozontech/kelp
         dslSlide {
 
-            //TODO Aggiungere descrizione: Cos'è un design system.
             //https://m3.material.io/
 
             content {
@@ -495,18 +494,23 @@ fun Presentation.Kmp() {
                         }
                     }
                 }
-
-                notes {
-                    +"""
-                    
-                    """.trimIndent()
-                }
             }
         }
 
         // Desktop
-
         //https://github.com/kdroidFilter/ComposeNativeTray
+        dslSlide {
+            content {
+                div("r-vstack") {
+                    img(src = "images/jb-toolbox.png")
+                    a(href = "https://dukat.io/") {
+                        + "JetBrains Toolbox Case Study"
+                    }
+                }
+            }
+        }
+
+
     }
 }
 

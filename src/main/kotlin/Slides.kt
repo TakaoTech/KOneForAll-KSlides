@@ -87,11 +87,20 @@ fun main() {
             Backend()
             Svarioni()
 
-            dslSlide {
-                content {
-                    img(src = "images/qr-code-takaotech.png")
+            verticalSlides {
+                // closeslide begin
+                dslSlide {
+                    id = "closeslide"
+                    content {
+                        img(src = "images/qr-code-takaotech.png")
+                    }
                 }
+                // closeslide end
+
+                slideDefinition(source = slides, token = "closeslide")
             }
+
+
         }
     }
 }

@@ -231,6 +231,34 @@ fun Presentation.Svarioni() {
                 }
             }
         }
+
+        //https://github.com/typesafegithub/github-workflows-kt
+        dslSlide {
+            content {
+                div {
+                    style = """
+                    display: flex;
+                    gap: 10px;
+                    """.trimIndent()
+
+                    a(href = "https://github.com/typesafegithub/github-workflows-kt"){
+                        style = """
+                        width: 25%;
+                        height: auto;
+                        object-fit: contain;
+                        """.trimIndent()
+                        img(src = "https://github.com/typesafegithub/github-workflows-kt/raw/main/images/Logo-White.svg#gh-dark-mode-only")
+                    }
+                    img(src = "https://github.com/typesafegithub/github-workflows-kt/raw/gh-pages/teaser-with-newest-version.svg"){
+                        style = """
+                        width: 75%;
+                        height: auto;
+                        object-fit: contain;
+                        """.trimIndent()
+                    }
+                }
+            }
+        }
     }
 
     //https://github.com/Pi4J/pi4j-kotlin
@@ -750,26 +778,31 @@ fun Presentation.Svarioni() {
             }
         }
 
+        //https://github.com/kool-engine/kool
+        dslSlide {
+            content {
+                iframe {
+                    src = "https://fabmax.github.io/kool/kool-js/"
+                    width = "90%"
+                    height = "810px"
+                }
+
+                notes { + "https://github.com/kool-engine/kool" }
+            }
+        }
+
         //https://github.com/kotlin-graphics/vkk
         dslSlide {
             content {
                 img(src = "images/vkk-kotlin.png")
+
+                notes {
+                    + "https://github.com/kotlin-graphics/vkk"
+                }
             }
         }
     }
 
-    //https://github.com/cdsap/ProjectGenerator
-
-
-
-
     //https://github.com/gabryon99/postcat-kodee
-    //https://github.com/kool-engine/kool
 
-    //TODO Kotlin script
-
-    //https://github.com/typesafegithub/github-workflows-kt
-
-
-    //https://github.com/joreilly/Confetti
 }
