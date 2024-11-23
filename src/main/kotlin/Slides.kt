@@ -100,6 +100,12 @@ fun main() {
                 slideDefinition(source = slides, token = "closeslide")
             }
 
+            dslSlide {
+                content {
+                    img(src = "images/KotlinItaliaLogoRounded.png")
+                }
+            }
+
 
         }
     }
